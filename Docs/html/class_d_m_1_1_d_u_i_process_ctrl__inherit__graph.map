@@ -1,0 +1,7 @@
+<map id="DM::DUIProcessCtrl" name="DM::DUIProcessCtrl">
+<area shape="rect" id="node2" href="$class_d_m_1_1_d_u_i_window.html" title="DUI窗口的基类，所有DUI均通过此类继承，以DV_开头的为虚函数，子类可重载,属性：DMAttr::DUIWindowAttr ..." alt="" coords="82,229,199,256"/>
+<area shape="rect" id="node3" href="$class_d_m_1_1_d_m_base.html" title="所有注册类、DUI类的基类 " alt="" coords="19,155,119,181"/>
+<area shape="rect" id="node4" href="$class_d_m_1_1_d_m_data_base.html" title="xml解析类的基类，用于所有数据类使用XML解析宏 " alt="" coords="5,80,132,107"/>
+<area shape="rect" id="node5" href="$class_d_m_1_1_d_m_ref_num.html" title="DMRefNum:SMart指针的基类,被DMSmartPtrT使用 " alt="" coords="11,5,127,32"/>
+<area shape="rect" id="node6" href="$class_d_m_1_1_d_u_i_msg_handler.html" title="所有DUI窗口消息分发的基类,函数名和DMMsgCrack.h保持一致,方便DMMsgCrack.h和DUIMsgCrack.h混用,在DUI上,使用m_bDuiMsgHandled,否则使用DMCWnd的m_bMsgHandled " alt="" coords="143,155,283,181"/>
+</map>

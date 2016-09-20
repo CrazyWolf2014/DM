@@ -1,0 +1,5 @@
+<map id="DM::DMRegMgr" name="DM::DMRegMgr">
+<area shape="rect" id="node2" href="$class_d_m_1_1_d_m_reg_type_item.html" title="DefRegName可用于定义默认注册类型类名， 比如xml解析实现如果有几套注册类，这时就需要通过它来指定当前使�..." alt="" coords="129,109,276,136"/>
+<area shape="rect" id="node3" href="$class_d_m_1_1_d_m_array_t.html" title="DM::DMArrayT\&lt; IDMRegPtr \&gt;" alt="" coords="5,13,200,39"/>
+<area shape="rect" id="node4" href="$class_d_m_1_1_d_m_string_t.html" title="DM::DMStringT\&lt; wchar\l_t, wchar_traits \&gt;" alt="" coords="224,5,381,47"/>
+</map>

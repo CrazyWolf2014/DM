@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.11"/>
+<title>DMHelp: D:/DM/DmMain/inc/Core/DMCWnd.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">DMHelp
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.11 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li><a href="annotated.html"><span>类</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_201ee424407554b8cb0f6419f4e43c51.html">DmMain</a></li><li class="navelem"><a class="el" href="dir_25b995a4c64eb2bdd6e989a20d59ccec.html">inc</a></li><li class="navelem"><a class="el" href="dir_635248f61a9cb70c06affa66eee44abf.html">Core</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">DMCWnd.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//-------------------------------------------------------</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Copyright (c) DuiMagic</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// All rights reserved.</span></div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// </span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// File Name: DMCWndBase.h </span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">// File Des: 简单实现CWnd，同时支持trunk窗口过程</span></div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">// File Summary: </span></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">// Cur Version: 1.0</span></div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">// Author:</span></div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">// Create Data:</span></div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">// History:</span></div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">//      &lt;Author&gt;    &lt;Time&gt;      &lt;Version&gt;     &lt;Des&gt;</span></div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">//      guoyou      2015-1-13   1.0         </span></div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">//-------------------------------------------------------</span></div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#pragma once</span></div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_d_m.html">DM</a></div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div><div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_d_m_1_1_d_m_c_wnd.html">   21</a></span>&#160;    <span class="keyword">class </span>DM_EXPORT <a class="code" href="class_d_m_1_1_d_m_c_wnd.html">DMCWnd</a>:<span class="keyword">public</span> <a class="code" href="class_d_m_1_1_d_m_c_wnd_base.html">DMCWndBase</a>        <span class="comment">// 封装CWnd</span></div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                          ,<span class="keyword">public</span> <a class="code" href="class_d_m_1_1_d_m_msg_thunk_tool.html">DMMsgThunkTool</a>    <span class="comment">// trunk工具</span></div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                          ,<span class="keyword">public</span> <a class="code" href="class_d_m_1_1_i_d_m_msg_map.html">IDMMsgMap</a>         <span class="comment">// 消息分发</span></div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    {</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">public</span>:</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keyword">enum</span>{DMSTATE_DESTROYED = 0x00000001};  </div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">public</span>:</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <a class="code" href="class_d_m_1_1_d_m_c_wnd.html">DMCWnd</a>();</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keyword">virtual</span> ~<a class="code" href="class_d_m_1_1_d_m_c_wnd.html">DMCWnd</a>();</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">public</span>:</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        HWND CreateWindowEx(LPCWSTR lpClassName, LPCWSTR lpWindowName,DWORD dwStyle, DWORD dwExStyle, </div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> nWidth, <span class="keywordtype">int</span> nHeight, HWND hWndParent, PVOID lpParam); </div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> OnFinalMessage(HWND hWnd);     </div><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div><div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">public</span>:</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        DECLARE_MESSAGE_MAP();<span class="comment">// 声明ProcessWindowMessage</span></div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keyword">static</span> LRESULT CALLBACK FirstWindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keyword">static</span> LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        LRESULT DefWindowProc();</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        LRESULT DefWindowProc(UINT uMsg, WPARAM wParam, LPARAM lParam);</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="comment">// copy from atlwin</span></div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        LRESULT ForwardNotifications(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL&amp; bHandled);</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        LRESULT ReflectNotifications(UINT uMsg, WPARAM wParam, LPARAM lParam, BOOL&amp; bHandled);</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keyword">static</span> BOOL DefaultReflectionHandler(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam, LRESULT&amp; lResult);</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keyword">public</span>:</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keyword">const</span> MSG*                   m_pCurrentMsg;                            <span class="comment">// 仿ATL</span></div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        WNDPROC                      m_pfnSuperWindowProc;      </div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        DWORD                        m_dwState;                                <span class="comment">// 是否被destory</span></div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        BOOL                         m_bMsgHandled;</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keyword">static</span> <a class="code" href="class_d_m_1_1_d_m_c_wnd.html">DMCWnd</a>*               ms_pThis;</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    };</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}<span class="comment">//namespace DM</span></div><div class="ttc" id="class_d_m_1_1_d_m_c_wnd_base_html"><div class="ttname"><a href="class_d_m_1_1_d_m_c_wnd_base.html">DM::DMCWndBase</a></div><div class="ttdoc">基于atlwin.CWindow,模拟CWnd </div><div class="ttdef"><b>Definition:</b> DMCWndBase.h:24</div></div>
+<div class="ttc" id="class_d_m_1_1_d_m_c_wnd_html"><div class="ttname"><a href="class_d_m_1_1_d_m_c_wnd.html">DM::DMCWnd</a></div><div class="ttdoc">基础thunk、消息分发、窗口函数封装类 </div><div class="ttdef"><b>Definition:</b> DMCWnd.h:21</div></div>
+<div class="ttc" id="class_d_m_1_1_i_d_m_msg_map_html"><div class="ttname"><a href="class_d_m_1_1_i_d_m_msg_map.html">DM::IDMMsgMap</a></div><div class="ttdoc">所有真实窗口消息分发的基类 </div><div class="ttdef"><b>Definition:</b> IDMMsg.h:22</div></div>
+<div class="ttc" id="class_d_m_1_1_d_m_msg_thunk_tool_html"><div class="ttname"><a href="class_d_m_1_1_d_m_msg_thunk_tool.html">DM::DMMsgThunkTool</a></div><div class="ttdoc">thunk工具,要创建多个主窗口，所以不能为单例模式 </div><div class="ttdef"><b>Definition:</b> DMMsgThunk.h:39</div></div>
+<div class="ttc" id="namespace_d_m_html"><div class="ttname"><a href="namespace_d_m.html">DM</a></div><div class="ttdoc">错误码列表 </div><div class="ttdef"><b>Definition:</b> DMActiveXBase.h:19</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2016年 九月 20日 星期二 11:05:23 , 为 DMHelp使用  &#160;<a href="http://www.hgy413.com            ">
+<img class="footer" src="duimgic.png" alt="doxygen"/>
+</a> 1.8.11
+</small></address>
+</body>
+</html>

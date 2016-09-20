@@ -1,0 +1,6 @@
+<map id="DM::DMCWnd" name="DM::DMCWnd">
+<area shape="rect" id="node2" href="$class_d_m_1_1_d_m_c_wnd_base.html" title="基于atlwin.CWindow,模拟CWnd " alt="" coords="5,95,141,121"/>
+<area shape="rect" id="node3" href="$class_d_m_1_1_d_m_msg_thunk_tool.html" title="thunk工具,要创建多个主窗口，所以不能为单例模式 " alt="" coords="165,95,320,121"/>
+<area shape="rect" id="node4" href="$class_d_m_1_1_d_m_msg_thunk.html" title="thunk操作，把hwnd偷换成this指针，从而实现全局函数切换到类成员函数,x64代码暂未移过来 ..." alt="" coords="177,5,308,32"/>
+<area shape="rect" id="node5" href="$class_d_m_1_1_i_d_m_msg_map.html" title="所有真实窗口消息分发的基类 " alt="" coords="344,95,467,121"/>
+</map>

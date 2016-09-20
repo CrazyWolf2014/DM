@@ -1,0 +1,4 @@
+<map id="类继承关系图" name="类继承关系图">
+<area shape="rect" id="node1" href="$class_d_m_1_1_i_d_m_reg.html" title="每个注册类通过Helper操作必须有创建自身对象(NewObj)、复制自身的能力(Clone) " alt="" coords="5,5,101,32"/>
+<area shape="rect" id="node2" href="$class_d_m_1_1_d_m_reg_helper_t.html" title="辅助注册类，T必须是基于DMBase的类，或者实现了(static)GetClassName与GetBaseClassName的类 ..." alt="" coords="149,5,317,32"/>
+</map>

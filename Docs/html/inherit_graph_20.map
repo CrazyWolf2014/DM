@@ -1,0 +1,4 @@
+<map id="类继承关系图" name="类继承关系图">
+<area shape="rect" id="node1" href="$class_d_m_1_1_d_m_lazy_base_t.html" title="DM::DMLazyBaseT\&lt; DM\l::DMSpyTool, true, DMDefLazy\lTraits\&lt; DM::DMSpyTool \&gt;,\l sizeof(DM::DMSpyTool)\&gt;" alt="" coords="5,5,208,76"/>
+<area shape="rect" id="node2" href="$class_d_m_1_1_d_m_lazy_t.html" title="DM::DMLazyT\&lt; DM::DMSpyTool \&gt;" alt="" coords="256,27,480,54"/>
+</map>

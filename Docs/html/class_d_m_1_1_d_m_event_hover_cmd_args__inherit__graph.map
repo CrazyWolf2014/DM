@@ -1,0 +1,3 @@
+<map id="DM::DMEventHoverCmdArgs" name="DM::DMEventHoverCmdArgs">
+<area shape="rect" id="node2" href="$class_d_m_1_1_d_m_event_args.html" title="事件基类,所有需注册的新事件必须先创建一个子类继承于它，并分配一个新的事件ID " alt="" coords="35,5,164,32"/>
+</map>

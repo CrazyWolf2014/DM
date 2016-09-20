@@ -1,0 +1,4 @@
+<map id="类继承关系图" name="类继承关系图">
+<area shape="rect" id="node1" href="$class_d_m_1_1_d_m_map_t.html" title="DM::DMMapT\&lt; UINT_PTR,\l TIMERINFO \&gt;" alt="" coords="5,5,184,47"/>
+<area shape="rect" id="node2" href="$class_d_m_1_1_d_u_i_timer.html" title="全局的定时器，使用callback方式实现 " alt="" coords="232,13,335,39"/>
+</map>

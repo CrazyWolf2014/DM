@@ -1,0 +1,4 @@
+<map id="类继承关系图" name="类继承关系图">
+<area shape="rect" id="node1" href="$class_d_m_1_1_d_m_array_t.html" title="DM::DMArrayT\&lt; IDMRegPtr \&gt;" alt="" coords="5,5,200,32"/>
+<area shape="rect" id="node2" href="$class_d_m_1_1_d_m_reg_type_item.html" title="DefRegName可用于定义默认注册类型类名， 比如xml解析实现如果有几套注册类，这时就需要通过它来指定当前使�..." alt="" coords="248,5,395,32"/>
+</map>

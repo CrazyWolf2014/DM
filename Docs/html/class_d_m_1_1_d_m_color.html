@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.11"/>
+<title>DMHelp: DM::DMColor类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">DMHelp
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.11 -->
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>首页</span></a></li>
+      <li class="current"><a href="annotated.html"><span>类</span></a></li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>类列表</span></a></li>
+      <li><a href="classes.html"><span>类索引</span></a></li>
+      <li><a href="inherits.html"><span>类继承关系</span></a></li>
+      <li><a href="functions.html"><span>类成员</span></a></li>
+    </ul>
+  </div>
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespace_d_m.html">DM</a></li><li class="navelem"><a class="el" href="class_d_m_1_1_d_m_color.html">DMColor</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-static-methods">静态 Public 成员函数</a> &#124;
+<a href="class_d_m_1_1_d_m_color-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">DM::DMColor类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>图形解码器或其他DIB默认从低到高位是BGRA 而RGBA(COLORREF)默认从低到高位是RGBA DM内部默认使用BGRA 统一使用PBGRA  
+ <a href="class_d_m_1_1_d_m_color.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_d_m_color_8h_source.html">DMColor.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a950a7c54df75f87d64f76234e5718092"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a950a7c54df75f87d64f76234e5718092"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_m_1_1_d_m_color.html#a950a7c54df75f87d64f76234e5718092">DMColor</a> (DWORD clr)</td></tr>
+<tr class="memdesc:a950a7c54df75f87d64f76234e5718092"><td class="mdescLeft">&#160;</td><td class="mdescRight">使用DWORD构造函数，方便直接使用PBGRA赋值 <br /></td></tr>
+<tr class="separator:a950a7c54df75f87d64f76234e5718092"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a194156a737243c614975e1f352a1cfdd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a194156a737243c614975e1f352a1cfdd"></a>
+const COLORREF&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_m_1_1_d_m_color.html#a194156a737243c614975e1f352a1cfdd">ToCOLORREF</a> () const </td></tr>
+<tr class="memdesc:a194156a737243c614975e1f352a1cfdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">转换成COLORREF,并把alpha置为0 <br /></td></tr>
+<tr class="separator:a194156a737243c614975e1f352a1cfdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1dd699dfaef04dd755ef2201f08518a2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1dd699dfaef04dd755ef2201f08518a2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_m_1_1_d_m_color.html#a1dd699dfaef04dd755ef2201f08518a2">SetbyBGRA</a> (DWORD Clr)</td></tr>
+<tr class="memdesc:a1dd699dfaef04dd755ef2201f08518a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">clr为BGRA格式 <br /></td></tr>
+<tr class="separator:a1dd699dfaef04dd755ef2201f08518a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80dcbc84e612e6cd2b7f857844779ba3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a80dcbc84e612e6cd2b7f857844779ba3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_m_1_1_d_m_color.html#a80dcbc84e612e6cd2b7f857844779ba3">PreMultiply</a> (BYTE alpha)</td></tr>
+<tr class="memdesc:a80dcbc84e612e6cd2b7f857844779ba3"><td class="mdescLeft">&#160;</td><td class="mdescRight">预乘 <br /></td></tr>
+<tr class="separator:a80dcbc84e612e6cd2b7f857844779ba3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5ce4d30d4a2476ae69dcca5cedaaf9b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac5ce4d30d4a2476ae69dcca5cedaaf9b"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_m_1_1_d_m_color.html#ac5ce4d30d4a2476ae69dcca5cedaaf9b">IsDefault</a> ()</td></tr>
+<tr class="memdesc:ac5ce4d30d4a2476ae69dcca5cedaaf9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">是否默认色 <br /></td></tr>
+<tr class="separator:ac5ce4d30d4a2476ae69dcca5cedaaf9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae241341a2e62a47041e99fccdbaecd70"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae241341a2e62a47041e99fccdbaecd70"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_m_1_1_d_m_color.html#ae241341a2e62a47041e99fccdbaecd70">IsTranslucent</a> ()</td></tr>
+<tr class="memdesc:ae241341a2e62a47041e99fccdbaecd70"><td class="mdescLeft">&#160;</td><td class="mdescRight">是否透明 <br /></td></tr>
+<tr class="separator:ae241341a2e62a47041e99fccdbaecd70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03d987b3830fd34d3e7dee1ad0f4c595"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a03d987b3830fd34d3e7dee1ad0f4c595"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_m_1_1_d_m_color.html#a03d987b3830fd34d3e7dee1ad0f4c595">IsTextInvalid</a> ()</td></tr>
+<tr class="memdesc:a03d987b3830fd34d3e7dee1ad0f4c595"><td class="mdescLeft">&#160;</td><td class="mdescRight">纯白透明度为0的认为是无效字体色 <br /></td></tr>
+<tr class="separator:a03d987b3830fd34d3e7dee1ad0f4c595"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78b3ab97f262573ddb5cbef04818fa43"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a78b3ab97f262573ddb5cbef04818fa43"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_m_1_1_d_m_color.html#a78b3ab97f262573ddb5cbef04818fa43">SetTextInvalid</a> ()</td></tr>
+<tr class="memdesc:a78b3ab97f262573ddb5cbef04818fa43"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置无效字体色 <br /></td></tr>
+<tr class="separator:a78b3ab97f262573ddb5cbef04818fa43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+静态 Public 成员函数</h2></td></tr>
+<tr class="memitem:a77583aa062137bcb4c7bac2b3e68b6a2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a77583aa062137bcb4c7bac2b3e68b6a2"></a>
+static <a class="el" href="class_d_m_1_1_d_m_color.html">DMColor</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_d_m_1_1_d_m_color.html#a77583aa062137bcb4c7bac2b3e68b6a2">PreMultiPly</a> (<a class="el" href="class_d_m_1_1_d_m_color.html">DMColor</a> clr, BYTE alpha)</td></tr>
+<tr class="memdesc:a77583aa062137bcb4c7bac2b3e68b6a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">全局预乘 <br /></td></tr>
+<tr class="separator:a77583aa062137bcb4c7bac2b3e68b6a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>图形解码器或其他DIB默认从低到高位是BGRA 而RGBA(COLORREF)默认从低到高位是RGBA DM内部默认使用BGRA 统一使用PBGRA </p>
+</div><hr/>该类的文档由以下文件生成:<ul>
+<li>D:/DM/DmMain/inc/Common/<a class="el" href="_d_m_color_8h_source.html">DMColor.h</a></li>
+<li>D:/DM/DmMain/src/Common/DMColor.cpp</li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+生成于 2016年 九月 20日 星期二 11:05:23 , 为 DMHelp使用  &#160;<a href="http://www.hgy413.com            ">
+<img class="footer" src="duimgic.png" alt="doxygen"/>
+</a> 1.8.11
+</small></address>
+</body>
+</html>

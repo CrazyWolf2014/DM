@@ -1,0 +1,38 @@
+<map id="类继承关系图" name="类继承关系图">
+<area shape="rect" id="node1" href="$class_d_m_1_1_d_m_event_args.html" title="事件基类,所有需注册的新事件必须先创建一个子类继承于它，并分配一个新的事件ID " alt="" coords="5,883,135,909"/>
+<area shape="rect" id="node2" href="$class_d_m_1_1_d_m_event3d_view_args.html" title="3D转动事件 " alt="" coords="222,5,393,32"/>
+<area shape="rect" id="node3" href="$class_d_m_1_1_d_m_event_c_b_sel_change_args.html" title="COMBOX事件 " alt="" coords="202,56,413,83"/>
+<area shape="rect" id="node4" href="$class_d_m_1_1_d_m_event_check_changing_cmd_args.html" title="通用Check改变消息 " alt="" coords="211,107,404,149"/>
+<area shape="rect" id="node5" href="$class_d_m_1_1_d_m_event_cmd_args.html" title="通用事件 " alt="" coords="229,173,385,200"/>
+<area shape="rect" id="node6" href="$class_d_m_1_1_d_m_event_header_click_args.html" title="列表头 事件 " alt="" coords="208,224,407,251"/>
+<area shape="rect" id="node7" href="$class_d_m_1_1_d_m_event_header_item_changed_args.html" title="列表头切换后事件 " alt="" coords="184,275,431,301"/>
+<area shape="rect" id="node8" href="$class_d_m_1_1_d_m_event_header_item_changing_args.html" title="列表头切换中事件 " alt="" coords="183,325,432,352"/>
+<area shape="rect" id="node9" href="$class_d_m_1_1_d_m_event_header_item_swap_args.html" title="列表头拖动事件 " alt="" coords="194,376,421,403"/>
+<area shape="rect" id="node10" href="$class_d_m_1_1_d_m_event_hover_cmd_args.html" title="通用鼠标停留事件 " alt="" coords="213,427,401,453"/>
+<area shape="rect" id="node11" href="$class_d_m_1_1_d_m_event_kill_focus_args.html" title="失去焦点事件 " alt="" coords="216,477,399,504"/>
+<area shape="rect" id="node12" href="$class_d_m_1_1_d_m_event_l_b_get_disp_info_args.html" title="LISTBOX事件 " alt="" coords="201,528,413,555"/>
+<area shape="rect" id="node13" href="$class_d_m_1_1_d_m_event_l_b_sel_changed_args.html" title="LISTBOX选择后事件 " alt="" coords="200,579,415,605"/>
+<area shape="rect" id="node14" href="$class_d_m_1_1_d_m_event_l_b_sel_changing_args.html" title="LISTBOX选择中事件 " alt="" coords="198,629,417,656"/>
+<area shape="rect" id="node15" href="$class_d_m_1_1_d_m_event_l_c_get_disp_info_args.html" title="LISTCTRL事件 " alt="" coords="201,680,413,707"/>
+<area shape="rect" id="node16" href="$class_d_m_1_1_d_m_event_l_c_item_deleted_args.html" title="LISTCTRL删除事件 " alt="" coords="200,731,415,757"/>
+<area shape="rect" id="node17" href="$class_d_m_1_1_d_m_event_l_c_sel_changed_args.html" title="LISTCTRL改变后事件 " alt="" coords="200,781,415,808"/>
+<area shape="rect" id="node18" href="$class_d_m_1_1_d_m_event_l_c_sel_changing_args.html" title="LISTCTRL改变中事件 " alt="" coords="198,832,417,859"/>
+<area shape="rect" id="node19" href="$class_d_m_1_1_d_m_event_leave_cmd_args.html" title="通用鼠标离开事件 " alt="" coords="213,883,402,909"/>
+<area shape="rect" id="node20" href="$class_d_m_1_1_d_m_event_of_panel_args.html" title="PANEL选择后事件 " alt="" coords="220,933,395,960"/>
+<area shape="rect" id="node21" href="$class_d_m_1_1_d_m_event_of_panel_click_args.html" title="PANEL被左击事件 " alt="" coords="205,984,409,1011"/>
+<area shape="rect" id="node22" href="$class_d_m_1_1_d_m_event_of_panel_r_click_args.html" title="PANEL被右击事件 " alt="" coords="201,1035,414,1061"/>
+<area shape="rect" id="node23" href="$class_d_m_1_1_d_m_event_r_e_notify_args.html" title="RichEdit事件 " alt="" coords="217,1085,397,1112"/>
+<area shape="rect" id="node24" href="$class_d_m_1_1_d_m_event_r_e_want_return_args.html" title="RichEdit事件,在设置了wantReturn状态时，而且为单行时，发此消息，用于配合网页显示控件 ..." alt="" coords="199,1136,415,1163"/>
+<area shape="rect" id="node25" href="$class_d_m_1_1_d_m_event_script_start_args.html" title="脚本事件 " alt="" coords="212,1187,403,1213"/>
+<area shape="rect" id="node26" href="$class_d_m_1_1_d_m_event_scroll_args.html" title="滚动条事件 " alt="" coords="226,1237,389,1264"/>
+<area shape="rect" id="node27" href="$class_d_m_1_1_d_m_event_s_d_changed_args.html" title="Slider Pos改变后事件 " alt="" coords="208,1288,407,1315"/>
+<area shape="rect" id="node28" href="$class_d_m_1_1_d_m_event_s_d_changing_args.html" title="Slider Pos改变事件 " alt="" coords="207,1339,408,1365"/>
+<area shape="rect" id="node29" href="$class_d_m_1_1_d_m_event_set_focus_args.html" title="设置焦点事件 " alt="" coords="215,1389,400,1416"/>
+<area shape="rect" id="node30" href="$class_d_m_1_1_d_m_event_size_changed_cmd_args.html" title="通用布局完成消息 " alt="" coords="191,1440,424,1467"/>
+<area shape="rect" id="node31" href="$class_d_m_1_1_d_m_event_tab_sel_changed_args.html" title="Tab页切换后事件 " alt="" coords="197,1491,417,1517"/>
+<area shape="rect" id="node32" href="$class_d_m_1_1_d_m_event_tab_sel_changing_args.html" title="Tab页切换中事件 " alt="" coords="196,1541,419,1568"/>
+<area shape="rect" id="node33" href="$class_d_m_1_1_d_m_event_t_c_check_state_args.html" title="TREECTRL Check事件 " alt="" coords="201,1592,414,1619"/>
+<area shape="rect" id="node34" href="$class_d_m_1_1_d_m_event_t_c_expand_args.html" title="TREECTRL 展开事件 " alt="" coords="213,1643,402,1669"/>
+<area shape="rect" id="node35" href="$class_d_m_1_1_d_m_event_t_c_sel_changed_args.html" title="TREECTRL选择后事件 " alt="" coords="200,1693,415,1720"/>
+<area shape="rect" id="node36" href="$class_d_m_1_1_d_m_event_t_c_sel_changing_args.html" title="TREECTRL选择中事件 " alt="" coords="198,1744,417,1771"/>
+</map>

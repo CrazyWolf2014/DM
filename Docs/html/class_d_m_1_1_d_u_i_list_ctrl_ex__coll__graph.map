@@ -1,0 +1,21 @@
+<map id="DM::DUIListCtrlEx" name="DM::DUIListCtrlEx">
+<area shape="rect" id="node2" href="$class_d_m_1_1_d_u_i_scroll_base.html" title="DUIScrollBase的内置实现,仅用于为窗口扩展scrollbar,属性：DMAttr::DUIScrollBaseAttr ..." alt="" coords="1010,260,1145,287"/>
+<area shape="rect" id="node3" href="$class_d_m_1_1_d_u_i_window.html" title="DUI窗口的基类，所有DUI均通过此类继承，以DV_开头的为虚函数，子类可重载,属性：DMAttr::DUIWindowAttr ..." alt="" coords="687,199,805,225"/>
+<area shape="rect" id="node11" href="$class_d_m_1_1_d_u_i_window_node.html" title="DUI的树形窗口管理 " alt="" coords="1004,132,1151,159"/>
+<area shape="rect" id="node4" href="$class_d_m_1_1_d_m_base.html" title="所有注册类、DUI类的基类 " alt="" coords="377,5,477,32"/>
+<area shape="rect" id="node5" href="$class_d_m_1_1_d_m_data_base.html" title="xml解析类的基类，用于所有数据类使用XML解析宏 " alt="" coords="171,5,297,32"/>
+<area shape="rect" id="node6" href="$class_d_m_1_1_d_m_ref_num.html" title="DMRefNum:SMart指针的基类,被DMSmartPtrT使用 " alt="" coords="5,5,121,32"/>
+<area shape="rect" id="node7" href="$class_d_m_1_1_d_u_i_msg_handler.html" title="所有DUI窗口消息分发的基类,函数名和DMMsgCrack.h保持一致,方便DMMsgCrack.h和DUIMsgCrack.h混用,在DUI上,使用m_bDuiMsgHandled,否则使用DMCWnd的m_bMsgHandled " alt="" coords="357,56,497,83"/>
+<area shape="rect" id="node8" href="$class_d_m_1_1_i_d_m_container.html" title="容器扩展对象 " alt="" coords="363,107,491,133"/>
+<area shape="rect" id="node9" href="$class_d_m_1_1_d_m_smart_ptr_t.html" title="DM::DMSmartPtrT\&lt; DM\l::DUIWindow_XmlInfo \&gt;" alt="" coords="347,158,508,199"/>
+<area shape="rect" id="node10" href="$class_d_m_1_1_d_m_smart_ptr_t.html" title="DM::DMSmartPtrT\&lt; DM\l::IDMCanvas \&gt;" alt="" coords="347,223,508,265"/>
+<area shape="rect" id="node12" href="$class_d_m_1_1_d_u_i_window___data.html" title="DUI的其他基础属性 " alt="" coords="352,289,503,316"/>
+<area shape="rect" id="node13" href="$class_d_m_1_1_d_m_event_mgr.html" title="管理事件项，每个事件项管理多个待处理的注册函数 " alt="" coords="365,340,489,367"/>
+<area shape="rect" id="node14" href="$class_d_m_1_1_d_m_smart_ptr_t.html" title="DM::DMSmartPtrT\&lt; DM\l::IDMLayout \&gt;" alt="" coords="347,391,508,433"/>
+<area shape="rect" id="node15" href="$class_d_m_1_1_d_m_smart_ptr_t.html" title="DM::DMSmartPtrT\&lt; DM\l::IDMSkin \&gt;" alt="" coords="665,270,827,311"/>
+<area shape="rect" id="node16" href="$class_d_m_1_1_i_d_m_item_panel_owner.html" title="面板的拥有者 " alt="" coords="993,311,1161,337"/>
+<area shape="rect" id="node17" href="$class_d_m_1_1_d_m_array_t.html" title="DM::DMArrayT\&lt; LPLCITEMEX \&gt;" alt="" coords="972,361,1183,388"/>
+<area shape="rect" id="node18" href="$class_d_m_1_1_d_m_smart_ptr_t.html" title="DM::DMSmartPtrT\&lt; DM\l::DUIHeaderCtrl \&gt;" alt="" coords="997,413,1158,454"/>
+<area shape="rect" id="node19" href="$class_d_m_1_1_d_m_color.html" title="图形解码器或其他DIB默认从低到高位是BGRA 而RGBA(COLORREF)默认从低到高位是RGBA DM内部默认使用BGRA 统一�..." alt="" coords="1027,479,1127,505"/>
+<area shape="rect" id="node20" href="$class_d_m_1_1_d_m_smart_ptr_t.html" title="DM::DMSmartPtrT\&lt; DM\l::DUIItemPanel \&gt;" alt="" coords="997,530,1158,571"/>
+</map>

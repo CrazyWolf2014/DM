@@ -1,0 +1,29 @@
+<map id="DM::DMDropWnd" name="DM::DMDropWnd">
+<area shape="rect" id="node2" href="$class_d_m_1_1_d_m_h_wnd.html" title="此为最重要窗口主类，所有实例主窗口都应该直接或间接继承于此类,属性：DMAttr::DMHWndAttr ..." alt="" coords="1073,277,1180,304"/>
+<area shape="rect" id="node25" href="$class_d_m_1_1_d_m_dummy_wnd.html" title="DMHWnd的透明窗口蒙版 " alt="" coords="1345,232,1488,259"/>
+<area shape="rect" id="node3" href="$class_d_m_1_1_d_m_c_wnd.html" title="基础thunk、消息分发、窗口函数封装类 " alt="" coords="761,103,867,129"/>
+<area shape="rect" id="node4" href="$class_d_m_1_1_d_m_c_wnd_base.html" title="基于atlwin.CWindow,模拟CWnd " alt="" coords="427,103,563,129"/>
+<area shape="rect" id="node5" href="$class_d_m_1_1_d_m_msg_thunk_tool.html" title="thunk工具,要创建多个主窗口，所以不能为单例模式 " alt="" coords="418,153,573,180"/>
+<area shape="rect" id="node6" href="$class_d_m_1_1_d_m_msg_thunk.html" title="thunk操作，把hwnd偷换成this指针，从而实现全局函数切换到类成员函数,x64代码暂未移过来 ..." alt="" coords="171,153,301,180"/>
+<area shape="rect" id="node7" href="$class_d_m_1_1_i_d_m_msg_map.html" title="所有真实窗口消息分发的基类 " alt="" coords="434,52,557,79"/>
+<area shape="rect" id="node8" href="$class_d_m_1_1_d_u_i_window.html" title="DUI窗口的基类，所有DUI均通过此类继承，以DV_开头的为虚函数，子类可重载,属性：DMAttr::DUIWindowAttr ..." alt="" coords="755,709,873,736"/>
+<area shape="rect" id="node16" href="$class_d_m_1_1_d_u_i_window_node.html" title="DUI的树形窗口管理 " alt="" coords="1053,745,1200,772"/>
+<area shape="rect" id="node9" href="$class_d_m_1_1_d_m_base.html" title="所有注册类、DUI类的基类 " alt="" coords="445,760,545,787"/>
+<area shape="rect" id="node10" href="$class_d_m_1_1_d_m_data_base.html" title="xml解析类的基类，用于所有数据类使用XML解析宏 " alt="" coords="173,760,299,787"/>
+<area shape="rect" id="node11" href="$class_d_m_1_1_d_m_ref_num.html" title="DMRefNum:SMart指针的基类,被DMSmartPtrT使用 " alt="" coords="5,760,121,787"/>
+<area shape="rect" id="node12" href="$class_d_m_1_1_d_u_i_msg_handler.html" title="所有DUI窗口消息分发的基类,函数名和DMMsgCrack.h保持一致,方便DMMsgCrack.h和DUIMsgCrack.h混用,在DUI上,使用m_bDuiMsgHandled,否则使用DMCWnd的m_bMsgHandled " alt="" coords="425,811,565,837"/>
+<area shape="rect" id="node13" href="$class_d_m_1_1_i_d_m_container.html" title="容器扩展对象 " alt="" coords="431,912,559,939"/>
+<area shape="rect" id="node14" href="$class_d_m_1_1_d_m_smart_ptr_t.html" title="DM::DMSmartPtrT\&lt; DM\l::DUIWindow_XmlInfo \&gt;" alt="" coords="415,578,576,619"/>
+<area shape="rect" id="node15" href="$class_d_m_1_1_d_m_smart_ptr_t.html" title="DM::DMSmartPtrT\&lt; DM\l::IDMCanvas \&gt;" alt="" coords="415,513,576,554"/>
+<area shape="rect" id="node17" href="$class_d_m_1_1_d_u_i_window___data.html" title="DUI的其他基础属性 " alt="" coords="420,709,571,736"/>
+<area shape="rect" id="node18" href="$class_d_m_1_1_d_m_event_mgr.html" title="管理事件项，每个事件项管理多个待处理的注册函数 " alt="" coords="433,861,557,888"/>
+<area shape="rect" id="node19" href="$class_d_m_1_1_d_m_smart_ptr_t.html" title="DM::DMSmartPtrT\&lt; DM\l::IDMLayout \&gt;" alt="" coords="415,643,576,685"/>
+<area shape="rect" id="node20" href="$class_d_m_1_1_i_d_m_animate_owner.html" title="动画拥有者,classtype=DMREG_Attribute " alt="" coords="735,153,893,180"/>
+<area shape="rect" id="node21" href="$class_d_m_1_1_d_m_smart_ptr_t.html" title="DM::DMSmartPtrT\&lt; DM\l::IDMToolTip \&gt;" alt="" coords="733,205,895,246"/>
+<area shape="rect" id="node22" href="$class_d_m_1_1_d_m_smart_ptr_t.html" title="DM::DMSmartPtrT\&lt; DM\l::DMMsgLoop \&gt;" alt="" coords="733,270,895,311"/>
+<area shape="rect" id="node23" href="$class_d_m_1_1_d_m_smart_ptr_t.html" title="DM::DMSmartPtrT\&lt; DM\l::IDMDraw \&gt;" alt="" coords="733,335,895,377"/>
+<area shape="rect" id="node24" href="$class_d_m_1_1_d_m_h_wnd___data.html" title="DMHWnd的辅助参数 " alt="" coords="744,401,884,428"/>
+<area shape="rect" id="node26" href="$class_d_m_1_1_d_m_smart_ptr_t.html" title="DM::DMSmartPtrT\&lt; DM\l::DMHWnd_XmlInfo \&gt;" alt="" coords="733,453,895,494"/>
+<area shape="rect" id="node27" href="$class_d_m_1_1_i_d_m_message_filter.html" title="消息过滤基类 " alt="" coords="1049,5,1204,32"/>
+<area shape="rect" id="node28" href="$class_d_m_1_1_i_d_m_drop_owner.html" title="下拉真实窗口的拥有者 " alt="" coords="1058,56,1195,83"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="DM::DMDummyWnd" name="DM::DMDummyWnd">
+<area shape="rect" id="node2" href="$class_d_m_1_1_d_m_c_wnd.html" title="基础thunk、消息分发、窗口函数封装类 " alt="" coords="189,80,296,107"/>
+<area shape="rect" id="node3" href="$class_d_m_1_1_d_m_c_wnd_base.html" title="基于atlwin.CWindow,模拟CWnd " alt="" coords="5,5,141,32"/>
+<area shape="rect" id="node4" href="$class_d_m_1_1_d_m_msg_thunk_tool.html" title="thunk工具,要创建多个主窗口，所以不能为单例模式 " alt="" coords="165,5,320,32"/>
+<area shape="rect" id="node5" href="$class_d_m_1_1_i_d_m_msg_map.html" title="所有真实窗口消息分发的基类 " alt="" coords="344,5,467,32"/>
+</map>

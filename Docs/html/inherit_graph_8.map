@@ -1,0 +1,3 @@
+<map id="类继承关系图" name="类继承关系图">
+<area shape="rect" id="node1" href="$class_d_m_1_1_d_m_buf_t.html" title="作为一个临时缓存，该类的实现先考虑在栈上分配内存，栈上空间不够时，就从堆中分配 " alt="" coords="5,5,224,32"/>
+</map>

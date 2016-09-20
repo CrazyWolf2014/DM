@@ -1,0 +1,4 @@
+<map id="类继承关系图" name="类继承关系图">
+<area shape="rect" id="node1" href="$class_d_m_1_1_d_m_lazy_base_t.html" title="DM::DMLazyBaseT\&lt; DM\l::DUIFontPool, true,\l DMDefLazyTraits\&lt; DM\l::DUIFontPool \&gt;, sizeof\l(DM::DUIFontPool)\&gt;" alt="" coords="5,5,172,91"/>
+<area shape="rect" id="node2" href="$class_d_m_1_1_d_m_lazy_t.html" title="DM::DMLazyT\&lt; DM::DUIFont\lPool \&gt;" alt="" coords="220,27,412,69"/>
+</map>

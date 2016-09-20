@@ -1,0 +1,9 @@
+<map id="DMAttr::DUIScrollBaseAttr" name="DMAttr::DUIScrollBaseAttr">
+<area shape="rect" id="node3" href="$class_d_m_attr_1_1_d_u_i_list_box_attr.html" title="DM::DUIListBox的xml属性定义 " alt="" coords="445,5,602,32"/>
+<area shape="rect" id="node4" href="$class_d_m_attr_1_1_d_u_i_list_box_ex_attr.html" title="DM::DUIListBoxEx的xml属性定义 " alt="" coords="437,56,610,83"/>
+<area shape="rect" id="node5" href="$class_d_m_attr_1_1_d_u_i_list_ctrl_ex_attr.html" title="DM::DUIListCtrlEx的xml属性定义 " alt="" coords="438,107,609,133"/>
+<area shape="rect" id="node6" href="$class_d_m_attr_1_1_d_u_i_rich_edit_attr.html" title="DM::DUIButton的xml属性定义 " alt="" coords="442,157,605,184"/>
+<area shape="rect" id="node7" href="$class_d_m_attr_1_1_d_u_i_tree_ctrl_attr.html" title="DM::DUITreeCtrl的xml属性定义 " alt="" coords="444,208,603,235"/>
+<area shape="rect" id="node8" href="$class_d_m_attr_1_1_d_u_i_tree_ctrl_ex_attr.html" title="DM::DUITreeCtrlEx的xml属性定义 " alt="" coords="436,259,611,285"/>
+<area shape="rect" id="node2" href="$class_d_m_attr_1_1_d_u_i_window_attr.html" title="DM::DUIWindow的xml属性定义 " alt="" coords="5,132,164,159"/>
+</map>

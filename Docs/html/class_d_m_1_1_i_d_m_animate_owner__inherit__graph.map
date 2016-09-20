@@ -1,0 +1,5 @@
+<map id="DM::IDMAnimateOwner" name="DM::IDMAnimateOwner">
+<area shape="rect" id="node2" href="$class_d_m_1_1_d_m_h_wnd.html" title="此为最重要窗口主类，所有实例主窗口都应该直接或间接继承于此类,属性：DMAttr::DMHWndAttr ..." alt="" coords="86,80,193,107"/>
+<area shape="rect" id="node3" href="$class_d_m_1_1_d_m_drop_wnd.html" title="下拉真实窗口 " alt="" coords="5,155,129,181"/>
+<area shape="rect" id="node4" href="$class_d_m_1_1_d_m_h_dialog.html" title="主窗口类,用于CDialog相关DoModal " alt="" coords="154,155,269,181"/>
+</map>

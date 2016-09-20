@@ -1,0 +1,4 @@
+<map id="类继承关系图" name="类继承关系图">
+<area shape="rect" id="node1" href="$class_d_m_1_1_d_m_lazy_base_t.html" title="DM::DMLazyBaseT\&lt; DM\l::DMThreadActiveWndTool,\l true, DMDefLazyTraits\l\&lt; DM::DMThreadActiveWndTool\l \&gt;, sizeof(DM::DMThreadActiveWndTool)\&gt;" alt="" coords="5,5,271,91"/>
+<area shape="rect" id="node2" href="$class_d_m_1_1_d_m_lazy_t.html" title="DM::DMLazyT\&lt; DM::DMThread\lActiveWndTool \&gt;" alt="" coords="319,27,523,69"/>
+</map>
