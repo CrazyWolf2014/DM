@@ -1,6 +1,0 @@
-<map id="DM::DMResFolderImpl::SetCurTheme" name="DM::DMResFolderImpl::SetCurTheme">
-<area shape="rect" id="node2" href="$class_d_m_1_1_d_m_array_t_a85f2c2572933236e4b96723cdd20288e.html#a85f2c2572933236e4b96723cdd20288e" title="获取数目 " alt="" coords="207,5,377,32"/>
-<area shape="rect" id="node3" href="$class_d_m_1_1_d_m_buf_t_ae530ca30a3cb8c1ec8800bfdb1b189a4.html#ae530ca30a3cb8c1ec8800bfdb1b189a4" title="分配内存（按对象个数） " alt="" coords="217,56,367,83"/>
-<area shape="rect" id="node4" href="$class_d_m_1_1_d_m_buf_t_a6c5cc8021196f4acc31b0c6718f34fb2.html#a6c5cc8021196f4acc31b0c6718f34fb2" title="分配内存（按字节数） " alt="" coords="425,56,611,83"/>
-<area shape="rect" id="node5" href="$class_d_m_1_1_d_m_buf_t_a04346d252c98b76649554fb7484c9706.html#a04346d252c98b76649554fb7484c9706" title="释放内存 " alt="" coords="659,56,789,83"/>
-</map>

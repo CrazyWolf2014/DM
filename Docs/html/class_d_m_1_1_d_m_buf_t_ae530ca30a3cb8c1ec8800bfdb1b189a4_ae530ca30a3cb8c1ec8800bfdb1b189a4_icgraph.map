@@ -1,9 +1,0 @@
-<map id="DM::DMBufT::Allocate" name="DM::DMBufT::Allocate">
-<area shape="rect" id="node2" href="$class_d_m_1_1_d_m_xml_node.html#aa2a9306a814ed48c51028121b18232c0" title="辅助,用于Debug打印XML内容 " alt="" coords="212,5,428,32"/>
-<area shape="rect" id="node3" href="$class_d_m_1_1_d_m_app_data.html#a252f836c83affa809f7ccdcf170a7237" title="内部辅助&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;— " alt="" coords="227,57,413,98"/>
-<area shape="rect" id="node4" href="$class_d_m_1_1_d_m_draw_impl.html#a3f35c595d18aacefb34b7b908f9056e8" title="得到无效矩形列表,返回个数 " alt="" coords="204,123,436,149"/>
-<area shape="rect" id="node5" href="$class_d_m_1_1_d_m_draw_impl.html#a0cd44fb2a4c961ce187304c016bc0915" title="根据无效区列表进行绘制,pWnd一般为DMHWnd所在DUIWindow " alt="" coords="234,173,406,200"/>
-<area shape="rect" id="node7" href="$class_d_m_1_1_d_m_res_folder_impl_ab543700ff211285993fe96ad523a75eb.html#ab543700ff211285993fe96ad523a75eb" title="设置当前主题包 " alt="" coords="243,225,397,266"/>
-<area shape="rect" id="node8" href="$class_d_m_1_1_d_m_img_list_skin_impl.html#ab823d3c251d481f9988ddffe28d5f034" title="判断skin是否有效，如果无效,内部skin池将自动移除此skin " alt="" coords="239,290,401,331"/>
-<area shape="rect" id="node6" href="$class_d_m_1_1_d_m_draw_impl.html#a09c2ab038357b7eda6a66cc3d445f438" title="是否存在无效区 " alt="" coords="484,173,679,200"/>
-</map>

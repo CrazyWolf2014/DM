@@ -1,5 +1,0 @@
-<map id="DM::IDMItemPanelOwner" name="DM::IDMItemPanelOwner">
-<area shape="rect" id="node2" href="$class_d_m_1_1_d_u_i_list_box_ex.html" title="DUIListBoxEx的内置实现 " alt="" coords="5,80,136,107"/>
-<area shape="rect" id="node3" href="$class_d_m_1_1_d_u_i_list_ctrl_ex.html" title="DUIListCtrlEx的内置实现 " alt="" coords="160,80,288,107"/>
-<area shape="rect" id="node4" href="$class_d_m_1_1_d_u_i_tree_ctrl_ex.html" title="DUITreeCtrlEx的内置实现，属性：DMAttr::DUITreeCtrlExAttr " alt="" coords="313,80,445,107"/>
-</map>

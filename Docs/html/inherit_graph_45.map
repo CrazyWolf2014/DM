@@ -1,4 +1,0 @@
-<map id="类继承关系图" name="类继承关系图">
-<area shape="rect" id="node1" href="$class_d_m_1_1_d_m_singleton_t.html" title="DM::DMSingletonT\&lt; DMApp \&gt;" alt="" coords="5,5,204,32"/>
-<area shape="rect" id="node2" href="$class_d_m_1_1_d_m_app.html" title="此为最重要主Data类，一个应用程序应该只有一个此类的全局对象 " alt="" coords="252,5,345,32"/>
-</map>

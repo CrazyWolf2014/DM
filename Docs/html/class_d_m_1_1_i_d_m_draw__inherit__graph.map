@@ -1,6 +1,0 @@
-<map id="DM::IDMDraw" name="DM::IDMDraw">
-<area shape="rect" id="node5" href="$class_d_m_1_1_d_m_draw_impl.html" title="绘制逻辑内置实现 " alt="" coords="7,304,130,331"/>
-<area shape="rect" id="node2" href="$class_d_m_1_1_d_m_base.html" title="所有注册类、DUI类的基类 " alt="" coords="19,155,119,181"/>
-<area shape="rect" id="node3" href="$class_d_m_1_1_d_m_data_base.html" title="xml解析类的基类，用于所有数据类使用XML解析宏 " alt="" coords="5,80,132,107"/>
-<area shape="rect" id="node4" href="$class_d_m_1_1_d_m_ref_num.html" title="DMRefNum:SMart指针的基类,被DMSmartPtrT使用 " alt="" coords="11,5,127,32"/>
-</map>

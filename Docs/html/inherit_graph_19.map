@@ -1,4 +1,0 @@
-<map id="类继承关系图" name="类继承关系图">
-<area shape="rect" id="node1" href="$class_d_m_1_1_d_m_lazy_base_t.html" title="DM::DMLazyBaseT\&lt; DM\l::DMRegMgr, true, DMDefLazy\lTraits\&lt; DM::DMRegMgr \&gt;,\l sizeof(DM::DMRegMgr)\&gt;" alt="" coords="5,5,205,76"/>
-<area shape="rect" id="node2" href="$class_d_m_1_1_d_m_lazy_t.html" title="DM::DMLazyT\&lt; DM::DMRegMgr \&gt;" alt="" coords="253,27,476,54"/>
-</map>

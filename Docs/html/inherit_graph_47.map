@@ -1,4 +1,0 @@
-<map id="类继承关系图" name="类继承关系图">
-<area shape="rect" id="node1" href="$class_d_m_1_1_d_m_singleton_t.html" title="DM::DMSingletonT\&lt; DMDynLib\lMgr \&gt;" alt="" coords="5,5,208,47"/>
-<area shape="rect" id="node2" href="$class_d_m_1_1_d_m_dyn_lib_mgr.html" title="管理DMDynLib,移植自ogre插件系统，可参考OgreDynLibManager.h/.cpp " alt="" coords="256,13,388,39"/>
-</map>

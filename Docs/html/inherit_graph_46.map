@@ -1,4 +1,0 @@
-<map id="类继承关系图" name="类继承关系图">
-<area shape="rect" id="node1" href="$class_d_m_1_1_d_m_singleton_t.html" title="DM::DMSingletonT\&lt; DMAppData \&gt;" alt="" coords="5,5,231,32"/>
-<area shape="rect" id="node2" href="$class_d_m_1_1_d_m_app_data.html" title="封装管理所有的数据,建议仅供内部使用,如某功能需开放接口,请增加到DMApp中转发 " alt="" coords="279,5,399,32"/>
-</map>

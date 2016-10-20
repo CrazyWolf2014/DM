@@ -1,9 +1,0 @@
-<map id="DM::IDMMetaFile" name="DM::IDMMetaFile">
-<area shape="rect" id="node3" href="$class_d_m_1_1_i_d_m_bitmap.html" title="基本图元实现.kBitmap或HBITMAP的抽象体. " alt="" coords="5,155,120,181"/>
-<area shape="rect" id="node4" href="$class_d_m_1_1_i_d_m_brush.html" title="SkBitmap位图画刷或HBRUSH的抽象体 " alt="" coords="144,155,251,181"/>
-<area shape="rect" id="node5" href="$class_d_m_1_1_i_d_m_canvas.html" title="画布接口 " alt="" coords="275,155,389,181"/>
-<area shape="rect" id="node6" href="$class_d_m_1_1_i_d_m_font.html" title="SkTypeface或HFONT的抽象体 " alt="" coords="413,155,512,181"/>
-<area shape="rect" id="node7" href="$class_d_m_1_1_i_d_m_pen.html" title="SkBitmap或HPEN的抽象体 " alt="" coords="536,155,632,181"/>
-<area shape="rect" id="node8" href="$class_d_m_1_1_i_d_m_region.html" title="SkRegion或HRGN的抽象体–可参考CRgn成员函数 " alt="" coords="657,155,770,181"/>
-<area shape="rect" id="node2" href="$class_d_m_1_1_d_m_ref_num.html" title="DMRefNum:SMart指针的基类,被DMSmartPtrT使用 " alt="" coords="339,5,455,32"/>
-</map>
