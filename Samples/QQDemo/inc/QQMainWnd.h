@@ -22,6 +22,7 @@ class CQQMainWnd:public DMHWnd,public IDMWebEvent
 {
 public:
 	CQQMainWnd();
+	~CQQMainWnd();
 	DECLARE_MESSAGE_MAP()						// 仿MFC消息映射宏，也可以使用BEGIN_MSG_MAPT宏使消息处理在头文件
 	DECLARE_EVENT_MAP()							// 事件分发映射宏,也可以使用BEGIN_EVENT_MAPT宏使事件处理在头文件
 
@@ -32,6 +33,8 @@ public:
 	BOOL OnInitDialog(HWND wndFocus, LPARAM lInitParam);
 	void OnSize(UINT nType, CSize size);	
 	void OnShowWindow(BOOL bShow, UINT nStatus);
+	LRESULT OnShowTrayMenu(UINT uMsg, WPARAM wParam, LPARAM lParam);
+	void OnCommand(UINT uNotifyCode, int nID, HWND wndCtl);// 菜单测试
 
 	//---------------------------------------------------
 	// Function Des: 事件分发系列函数
