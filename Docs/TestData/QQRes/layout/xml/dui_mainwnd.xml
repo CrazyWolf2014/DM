@@ -12,7 +12,6 @@
 				<static pos="[5,44,@48,@16" align="left" font="face:微软雅黑,size:14,weight:700" clrtext="pbgra(0,0,0,ff)" text="扁扁熊" bfocusable="1"/>
 				<button name="name_edit_btn" pos="77,66,-62,@22" align="left" skin="btn_edit" text="编辑个性签名" font="face:微软雅黑,size:12,weight:400" textclr="pbgra(0,0,0,ff)" bvisible="1"/>
 				<edit   name="name_edit" pos="77,66,-62,@24" align="left" ncmargin="1,1,1,1" bautosel="1" clrnc="pbgra(e2,b2,3e,ff)" clrbg="pbgra(ff,ff,ff,ff)" font="face:微软雅黑,size:17,weight:400" bvisible="0"/>
-				<Link text="qq群:336721552" ncmargin="1,1,1,1" clrnc="pbgra(00,ff,00,ff)" clrbg="pbgra(ff,ff,ff,ff)" href="http://shang.qq.com/wpa/qunwpa?idkey=7b0b22ed306b5af1ab3722585729c24f50123f587fc19bd1a6fb7e4b8b699b13" pos="41,26,@120,@14" cursor="hand" font="weight:400,charset:0,underline:1,italic:0,strike:0,size:-14,face:新宋体" />
 			</window>
 			<edit   name="search_edit" pos="0,114,-0,@30" surfaceskin="surface_search" clrbg="pbgra(ff,ff,ff,ff)" font="face:微软雅黑,size:17,weight:400"/>
 			<tabctrl name="maintab" pos="0,144,-0,-58" itemsize="50,36" animatesteps="20" mainbgskin="tab_bg">

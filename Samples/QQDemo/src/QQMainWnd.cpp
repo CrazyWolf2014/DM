@@ -117,7 +117,7 @@ void CQQMainWnd::OnSize(UINT nType, CSize size)
 	}
 	m_WndShadow.SetPosition(0, 0);
 	SetMsgHandled(FALSE);
-}
+}   
 
 void CQQMainWnd::OnShowWindow(BOOL bShow, UINT nStatus)
 {

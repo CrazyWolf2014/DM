@@ -1,22 +1,30 @@
-# DM is a new direct UI framework 
-
-If you have any questions, please send an email to 80718901@qq.com, I will answer as soon as possible
-or you can join ![336721552](http://shang.qq.com/wpa/qunwpa?idkey=a4eb76996f3c7cb6018a3ca375a5df3360ba818579f60516092edd9ed1de23a8)(qq group)
-
-1.support cmake build
-![image](https://github.com/hgy413/Helper/blob/master/cmake.gif)   
--------------------------------------------------------------------------
-2.a powerful interface designer
-![image](https://github.com/hgy413/Helper/blob/master/designer1.gif)   
-![image](https://github.com/hgy413/Helper/blob/master/designer2.gif)   
-![image](https://github.com/hgy413/Helper/blob/master/designer3.gif)   
--------------------------------------------------------------------------
-3. use doxygen documentation
-![image](https://github.com/hgy413/Helper/blob/master/helper.gif)   
--------------------------------------------------------------------------
-4.Rich interface examples
-![image](https://github.com/hgy413/Helper/blob/master/1.gif) 
-![image](https://github.com/hgy413/Helper/blob/master/2.gif) 
-![image](https://github.com/hgy413/Helper/blob/master/3.gif) 
-![image](https://github.com/hgy413/Helper/blob/master/4.gif) 
-![image](https://github.com/hgy413/Helper/blob/master/5.gif) 
+#REDM
+为什么开源DM库？
+--->
+DM的部分代码，部分框架本来就是取之于各类开源，所以尝试开源DM库，取得于开源，回馈于开源，为开源软件业贡献自己的一份小小力量
+  
+--->
+就目前所有开源的DUI库来看，个人认为有个很大的不足，那就是并未按商业化的标准来做这些开源项目
+没有文档，没有框架图，没有帮助说明
+代码未规范化，基本无注释
+没有单元测试
+没有设计器
+当然，瑕不掩瑜，个人还是非常佩服这些开源的大牛们的!
+  
+本人做为一枚小小的码农以前有幸参与或主导了某些用户量较大（百万、上亿数量级）的项目，所以此次开源，也尝试以商业化的标准来完成这个开源源目
+DM库有详细的文档，详细的框架图：DM\Docs\DM详细文档.doc;DM\Docs\DUI主流程图.vsdx：http://hgy413.com/2086.html
+DM库运行了两年，前身为yggui,稳定可靠，部分示例:http://hgy413.com/3392.html
+DM库的代码统一规范，注释统一使用doxygen支持方式，参考在文件头标明链接 http://hgy413.com/3388.html
+DM库有详细的gtest单元测试，针对每个细分功能点 http://hgy413.com/2020.html
+DM库使用全扩展性：支持注册皮肤解析类、样式类、布局类、解码类、资源打包类、渲染类、绘制类、LOG类、TIPS类、动画类、脚本类
+DM有设计器，同样完全开源  http://hgy413.com/3382.html
+  
+  
+--->PS:
+DM库需要遵守什么开源协议？
+  无任何协议，无论个人，团体，公司，都可以随意使用，修改，COPY DM库，开源的目的不是为了强制你使用这个库，如果你能从这个库中拿到你需要的代码，这也是OK的
+  
+--->QQ群技术支持:
+  qq群：[336721552](http://shang.qq.com/wpa/qunwpa?idkey=a4eb76996f3c7cb6018a3ca375a5df3360ba818579f60516092edd9ed1de23a8)
+DM库GIT路径:
+    https://git.oschina.net/hgy413/REDM.git

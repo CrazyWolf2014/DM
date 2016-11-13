@@ -6,7 +6,7 @@
 // File Des: Ö÷´°¿Ú
 // File Summary: 
 // Cur Version: 1.0
-// Author:
+// Author: 
 // Create Data:
 // History:
 // 		<Author>	<Time>		<Version>	  <Des>
@@ -15,7 +15,7 @@
 #pragma once
 #include "WndShadow.h"
 #include "SkinWnd.h"
-#include "SpyWnd.h"
+#include "SpyWnd.h" 
 #include "WidgetWnd.h"
 
 class CQQMainWnd:public DMHWnd,public IDMWebEvent
