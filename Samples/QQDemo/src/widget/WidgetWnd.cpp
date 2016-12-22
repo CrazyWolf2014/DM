@@ -1,6 +1,7 @@
 #include "QQDemoAfx.h"
 #include "WidgetWnd.h"
 #include "DUIMenu.h"
+#include "DUIListCtrlEx.h"
 
 //
 #include "TabCtrl_Test.h"
@@ -43,6 +44,8 @@ BEGIN_EVENT_MAP(CWidgetWnd)
 	EVENT_NAME_COMMAND(L"ierefresh",IE_Test::OnBtnIeRefresh)
 	EVENT_NAME_COMMAND(L"iefront",IE_Test::OnBtnIefront)
 	EVENT_NAME_COMMAND(L"iejstest",IE_Test::OnBtnIeJsTest)
+
+	EVENT_NAME_HANDLER(L"richedit1",DMEVT_RENOTIFY,OnEditChange)
 END_EVENT_MAP()
 CWidgetWnd::CWidgetWnd()
 {
@@ -51,6 +54,38 @@ CWidgetWnd::CWidgetWnd()
 
 BOOL CWidgetWnd::OnInitDialog(HWND wndFocus, LPARAM lInitParam)
 {
+	// 加下richedit的变字体大小，颜色，下划线, 字符通知事件,示例
+	DUIRichEdit* pEdit = FindChildByNameT<DUIRichEdit>(L"richedit1");
+	if (pEdit)
+	{
+		CHARFORMAT2W cf;
+		ZeroMemory(&cf, sizeof(CHARFORMAT2W));
+		cf.cbSize = sizeof(CHARFORMAT2W);
+		cf.dwMask = CFM_COLOR|CFM_FACE|CFM_SIZE|CFM_UNDERLINE|CFM_UNDERLINETYPE|CFM_LINK;
+		cf.dwEffects = CFE_LINK|CFE_UNDERLINE;  
+		cf.yHeight = 500;
+		cf.crTextColor = RGB(255, 0, 0); 
+		pEdit->SetSel(MAKELONG(2,4));//选取2-4字符
+		pEdit->DM_SendMessage(EM_SETCHARFORMAT,SCF_SELECTION,(LPARAM)&cf);// 设置带下划线超链接
+
+		cf.dwMask = CFM_COLOR|CFM_FACE|CFM_SIZE;
+		cf.yHeight = 100;
+		pEdit->SetSel(MAKELONG(5,8));//选取5-8字符
+		cf.crTextColor = RGB(255, 255, 0); 
+		pEdit->DM_SendMessage(EM_SETCHARFORMAT,SCF_SELECTION,(LPARAM)&cf);
+
+		// 字符变化通知
+		pEdit->DM_SendMessage(EM_SETEVENTMASK,0,ENM_CHANGE);
+	}
+
+	// 增加ListCtrlEx排序示例
+	DUIListCtrlEx *pList = FindChildByNameT<DUIListCtrlEx>(L"listctrlex");
+	if (pList)
+	{
+		pList->m_pHeaderCtrl->m_EventMgr.SubscribeEvent(DM::DMEventHeaderClickArgs::EventID, Subscriber(&CWidgetWnd::ListCtrlExHeaderClick, this));
+	}
+	
+
 	m_pWebkit = FindChildByNameT<DUIWebKit>(L"webobj");
 	DUIRichEdit *pRichEdit = FindChildByNameT<DUIRichEdit>(L"web_url");
 	if (pRichEdit)
@@ -198,6 +233,50 @@ DMCode CWidgetWnd::OnAttrTest()
 	m_pAttrTestWnd->SendMessage(WM_INITDIALOG);
 	m_pAttrTestWnd->CenterWindow();
 	m_pAttrTestWnd->ShowWindow(SW_SHOW);
+	return DM_ECODE_OK;
+}
+
+DMCode CWidgetWnd::OnEditChange(DMEventArgs *pEvt)
+{
+	DMEventRENotifyArgs *pEvent = (DMEventRENotifyArgs*)(pEvt);
+	if (EN_CHANGE == pEvent->m_iNotify)
+	{
+		LOG_USER("richedit1 字符变化了\n");
+	}
+	return DM_ECODE_OK;
+}
+
+void SortItems(DUIListCtrlEx* pList, int nCol)
+{
+	if (1 == nCol// 只有点击1列头时才触发(0列开始)
+		&&pList->GetCount()>=2)
+	{
+		// 简单的示例,交换m_DMArray[0]和m_DMArray[1]
+		// 你也可以使用qsort_s函数来实现自己的快速排序
+		// 最终目的是调整m_DMArray中各项的顺序
+		LPLCITEMEX  pItem = pList->m_DMArray[0]; //等同于pList->GetObj(0);
+		pList->m_DMArray.RemoveAt(0);
+		pList->m_DMArray.InsertAt(1,pItem);
+
+		// 最后要更新下panel索引和刷新一下
+		pList->UpdateItemPanelId();
+		pList->DM_Invalidate();
+	}
+}
+
+DMCode CWidgetWnd::ListCtrlExHeaderClick(DMEventArgs* pEvt)
+{
+	DMEventHeaderClickArgs *pEvtCheck = (DMEventHeaderClickArgs*)pEvt;
+	DUIHeaderCtrl *pHeader = (DUIHeaderCtrl*)pEvtCheck->m_pSender;
+	if (pHeader)
+	{
+		DUIListCtrlEx *pList = (DUIListCtrlEx*)pHeader->DM_GetWindow(GDW_PARENT);
+		DMHDITEM hditem;
+		hditem.mask = DMHDI_ORDER;
+		pHeader->GetItem(pEvtCheck->m_iItem,&hditem);
+		SortItems(pList,hditem.iOrder);// iOrder为初始header的列头序号，从0开始
+	}
+
 	return DM_ECODE_OK;
 }
 
