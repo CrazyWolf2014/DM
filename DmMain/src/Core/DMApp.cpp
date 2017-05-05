@@ -217,7 +217,7 @@ namespace DM
 		DMCode iErr = DM_ECODE_FAIL;
 		do 
 		{
-			DMMsgLoop* pLoop = g_pDMMsgLoopTool->GetMessageLoop();
+			DMMsgLoop* pLoop = g_pDMMsgLoopTool->GetMessageLoop(pIdleHandler->m_dwThreadId);
 			if (NULL == pLoop)
 			{
 				break;
@@ -235,7 +235,7 @@ namespace DM
 		DMCode iErr = DM_ECODE_FAIL;
 		do 
 		{
-			DMMsgLoop* pLoop = g_pDMMsgLoopTool->GetMessageLoop();
+			DMMsgLoop* pLoop = g_pDMMsgLoopTool->GetMessageLoop(pIdleHandler->m_dwThreadId);
 			if (NULL == pLoop)
 			{
 				break;
@@ -253,7 +253,7 @@ namespace DM
 		DMCode iErr = DM_ECODE_FAIL;
 		do 
 		{
-			DMMsgLoop* pLoop = g_pDMMsgLoopTool->GetMessageLoop();
+			DMMsgLoop* pLoop = g_pDMMsgLoopTool->GetMessageLoop(pMessageFilter->m_dwThreadId);
 			if (NULL == pLoop)
 			{
 				break;
@@ -271,7 +271,7 @@ namespace DM
 		DMCode iErr = DM_ECODE_FAIL;
 		do 
 		{
-			DMMsgLoop* pLoop = g_pDMMsgLoopTool->GetMessageLoop();
+			DMMsgLoop* pLoop = g_pDMMsgLoopTool->GetMessageLoop(pMessageFilter->m_dwThreadId);
 			if (NULL == pLoop)
 			{
 				break;
@@ -282,6 +282,11 @@ namespace DM
 			}
 		} while (false);
 		return iErr;
+	}
+
+	bool DMApp::AddMessageLoop(DMMsgLoop* pMsgLoop)
+	{
+		return g_pDMMsgLoopTool->AddMessageLoop(pMsgLoop);
 	}
 
 	DMCode DMApp::InitDMXmlDocument(DMXmlDocument &XmlDoc, LPCWSTR lpszType,LPCWSTR lpszResName)

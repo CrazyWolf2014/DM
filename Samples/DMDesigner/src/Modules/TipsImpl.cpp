@@ -181,15 +181,16 @@ namespace DM
 			m_strXmlId	 = strXmlId;
 			m_strTip	 = pInfo->strTip;
 			m_rcPosFlags = pInfo->rcPosFlags;
-			m_rcScreenTarget = pInfo->rcScreenTarget;
-			Create();
-			CreateTipsWnd();
+			m_rcScreenTarget = pInfo->rcScreenTarget;			
 	
 			/// 更新数据
 			m_rcTarget = pInfo->rcTarget;
 			m_iDelayTime = pInfo->iDelayTime;
 			m_iSpanTime  = pInfo->iSpanTime;
 			m_dwReserve  = pInfo->dwReserve;
+
+			Create();
+			CreateTipsWnd();
 
 			if (m_pWnd->IsWindowVisible())
 			{
@@ -340,8 +341,6 @@ namespace DM
 
 			CRect rcWnd;
 			m_pWnd->GetWindowRect(&rcWnd);
-			int cx = GetSystemMetrics(SM_CXSCREEN); 
-			int cy = GetSystemMetrics(SM_CYSCREEN);
 			// 计算固定位置
 			int iFlags = m_rcPosFlags.left;
 			bool bFixPos = (m_rcPosFlags.bottom!=0);
@@ -376,14 +375,6 @@ namespace DM
 			if (-1 == m_rcPosFlags.left|| // 未指定显示坐标
 				false == bFixPos)// 不强制固定
 			{
-				if (rcWnd.right>cx) 
-				{
-					rcWnd.OffsetRect(cx-rcWnd.right,0);
-				}
-				if (rcWnd.bottom>cy) 
-				{
-					rcWnd.OffsetRect(0,cy-rcWnd.bottom);
-				}
 			}
 			
 			m_pWnd->SetWindowPos(HWND_TOPMOST,rcWnd.left,rcWnd.top,rcWnd.Width(),rcWnd.Height(),SWP_NOSENDCHANGING|SWP_SHOWWINDOW|SWP_NOACTIVATE);

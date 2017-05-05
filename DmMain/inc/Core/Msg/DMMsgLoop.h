@@ -31,7 +31,7 @@ namespace DM
 		/// -------------------------------------------------
 		/// @brief			开始消息循环
 		/// @return			Msg.Wparam
-		int Run();
+		virtual int Run();
 
 		/// -------------------------------------------------
 		/// @brief			增加预处理消息
@@ -81,6 +81,8 @@ namespace DM
 		IDMIdleHandlerList						m_IdleHandlerList;
 		
 		MSG										m_msg;
+		DMLock*								    m_pMsgLock;
+		DMLock*                                 m_pIdleLock;
 
 	};
 

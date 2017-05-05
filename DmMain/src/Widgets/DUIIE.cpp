@@ -21,7 +21,7 @@ namespace DM
 		m_pEvtHandler = pEventHandler;
 	}
 
-	void DMIEEvtDispatch::SetDUIWnd( DUIWND hWnd )
+	void DMIEEvtDispatch::SetDUIWnd(DUIWND hWnd)
 	{
 		m_hWnd = hWnd;
 	}
@@ -42,21 +42,12 @@ namespace DM
 		}
 	}
 
-	ULONG STDMETHODCALLTYPE DMIEEvtDispatch::AddRef(void)
-	{
-		return ++m_nRef;
-	}
-
-	ULONG STDMETHODCALLTYPE DMIEEvtDispatch::Release(void)
-	{ 
-		return --m_nRef;
-	}
-
-	STDMETHODIMP DMIEEvtDispatch::Invoke( /* [in] */ DISPID dispIdMember, /* [in] */ REFIID riid, /* [in] */ LCID lcid, /* [in] */ WORD wFlags, /* [out][in] */ DISPPARAMS *pDispParams, /* [out] */ VARIANT *pVarResult, /* [out] */ EXCEPINFO *pExcepInfo, /* [out] */ UINT *puArgErr )
+	STDMETHODIMP DMIEEvtDispatch::Invoke(DISPID dispIdMember, REFIID riid, LCID lcid, WORD wFlags, DISPPARAMS *pDispParams,  VARIANT *pVarResult,  EXCEPINFO *pExcepInfo,  UINT *puArgErr)
 	{
 		if ((riid != IID_NULL) || !m_pEvtHandler)
 			return E_INVALIDARG;
 
+		HRESULT hr = S_OK;
 		switch(dispIdMember)
 		{
 		case DISPID_BEFORENAVIGATE2:
@@ -65,10 +56,10 @@ namespace DM
 				wchar_t *pUrl	 = pDispParams->rgvarg[5].pvarVal->bstrVal; 
 				int Flags		 = pDispParams->rgvarg[4].pvarVal->intVal; 
 				wchar_t *TargetFrameName = pDispParams->rgvarg[3].pvarVal->bstrVal; 
-				wchar_t *PostData		 = pDispParams->rgvarg[2].pvarVal->bstrVal;
+				//wchar_t *PostData		 = pDispParams->rgvarg[2].pvarVal->bstrVal;
 				wchar_t *Headers		 = pDispParams->rgvarg[1].pvarVal->bstrVal;
 				VARIANT_BOOL *bCancel	 = pDispParams->rgvarg[0].pboolVal;
-				m_pEvtHandler->BeforeNavigate2(m_hWnd,pDisp,pUrl,Flags,TargetFrameName,PostData,Headers,bCancel);
+				hr = m_pEvtHandler->BeforeNavigate2(m_hWnd,pDisp,pUrl,Flags,TargetFrameName,pDispParams->rgvarg+2,Headers,bCancel);
 			}
 			break;
 
@@ -76,7 +67,7 @@ namespace DM
 			{
 				long *pCx = pDispParams->rgvarg[1].plVal;
 				long *pCy = pDispParams->rgvarg[0].plVal;
-				m_pEvtHandler->ClientToHostWindow(m_hWnd,pCx,pCy);
+				hr = m_pEvtHandler->ClientToHostWindow(m_hWnd,pCx,pCy);
 			}
 			break;
 
@@ -84,66 +75,27 @@ namespace DM
 			{
 				long         Command = pDispParams->rgvarg[1].lVal;
 				VARIANT_BOOL Enable  = pDispParams->rgvarg[0].boolVal;
-				m_pEvtHandler->CommandStateChange(m_hWnd,Command,Enable);
+				hr = m_pEvtHandler->CommandStateChange(m_hWnd,Command,Enable);
 			}
 			break;
 
 		case DISPID_DOCUMENTCOMPLETE:
 			{
-
-// 				DMComQIPtr<IHTMLDocument2> pDoc;
-// 				DMComQIPtr<ICustomDoc> pCustomDoc;
-// 
-// 				IDispatch  *pDisp=NULL;
-// 				HRESULT hr=m_pWebBrowser->m_pIE->get_Document((IDispatch **)&pDisp);
-// 				if(S_OK==hr)
-// 				{
-// 					hr=pDisp->QueryInterface(IID_IHTMLDocument2,(void**)&pDoc);
-// 					if(S_OK!=hr) return S_FALSE;
-// 					//----------------------------------------
-// 
-// 					hr=pDoc->QueryInterface(IID_ICustomDoc,(void**)&pCustomDoc);
-// 					if(S_OK!=hr) return S_FALSE;
-// 
-// 					hr=pCustomDoc->SetUIHandler(&m_pWebBrowser->m_docHostUIHandler);
-// 					if(S_OK!=hr) return S_FALSE;
-// 
-// 					//---------------------------------------
-// 					IConnectionPointContainer *pCPContainer=NULL;
-// 					hr=pDoc->QueryInterface(IID_IConnectionPointContainer,(void**)&pCPContainer);
-// 					if(S_OK!=hr) return S_FALSE;
-// 
-// 					IConnectionPoint *m_pConnectionPoint=NULL;
-// 					hr = pCPContainer->FindConnectionPoint(DIID_HTMLDocumentEvents2,&m_pConnectionPoint);
-// 					if(S_OK!=hr) return S_FALSE;
-// 
-// 					DWORD m_dwCookie;
-// 					hr = m_pConnectionPoint->Advise(&m_pWebBrowser->m_eventDispatch, &m_dwCookie);
-// 					if(S_OK!=hr) return S_FALSE;
-// 
-// 					ULONG ulong=pCPContainer->Release();
-// 					ulong=m_pConnectionPoint->Release();
-// 
-// 					pDisp->Release();
-// 				}
-
-				{
-					IDispatch *pDispArg = pDispParams->rgvarg[1].pdispVal;
-					wchar_t *pURL    = pDispParams->rgvarg[0].pvarVal->bstrVal;
-					m_pEvtHandler->DocumentComplete(m_hWnd,pDispArg,pURL);
-				}
+				IDispatch *pDispArg = pDispParams->rgvarg[1].pdispVal;
+				wchar_t *pURL    = pDispParams->rgvarg[0].pvarVal->bstrVal;
+				hr = m_pEvtHandler->DocumentComplete(m_hWnd,pDispArg,pURL);
 			}
 			break;
 		
 		case DISPID_DOWNLOADBEGIN:
 			{
-				m_pEvtHandler->DownloadBegin(m_hWnd);
+				hr = m_pEvtHandler->DownloadBegin(m_hWnd);
 			}
 			break;
 		
 		case DISPID_DOWNLOADCOMPLETE:
 			{
-				m_pEvtHandler->DownloadComplete(m_hWnd);
+				hr = m_pEvtHandler->DownloadComplete(m_hWnd);
 			}
 			break;
 		
@@ -151,7 +103,7 @@ namespace DM
 			{
 				VARIANT_BOOL ActiveDocument = pDispParams->rgvarg[1].boolVal;
 				VARIANT_BOOL *Cancel        = pDispParams->rgvarg[0].pboolVal;
-				m_pEvtHandler->FileDownload(m_hWnd,ActiveDocument,Cancel);
+				hr = m_pEvtHandler->FileDownload(m_hWnd,ActiveDocument,Cancel);
 			}
 			break;
 
@@ -159,7 +111,7 @@ namespace DM
 			{
 				IDispatch *pDisp = pDispParams->rgvarg[1].pdispVal;
 				wchar_t *pUrl    = pDispParams->rgvarg[0].pvarVal->bstrVal;
-				m_pEvtHandler->NavigateComplete2(m_hWnd,pDisp,pUrl);
+				hr = m_pEvtHandler->NavigateComplete2(m_hWnd,pDisp,pUrl);
 			}
 			break;
 
@@ -170,7 +122,7 @@ namespace DM
 				wchar_t *TargetFrameName = pDispParams->rgvarg[2].pvarVal->bstrVal;
 				int StatusCode   = pDispParams->rgvarg[1].pvarVal->intVal;
 				VARIANT_BOOL *Cancel = pDispParams->rgvarg[0].pvarVal->pboolVal;
-				m_pEvtHandler->NavigateError(m_hWnd,pDisp,pUrl,TargetFrameName,StatusCode,Cancel);
+				hr = m_pEvtHandler->NavigateError(m_hWnd,pDisp,pUrl,TargetFrameName,StatusCode,Cancel);
 			}
 			break;
 
@@ -178,7 +130,7 @@ namespace DM
 			{
 				IDispatch **ppDisp   = pDispParams->rgvarg[1].ppdispVal;
 				VARIANT_BOOL *Cancel = pDispParams->rgvarg[0].pboolVal;
-				m_pEvtHandler->NewWindow2(m_hWnd,ppDisp,Cancel);
+				hr = m_pEvtHandler->NewWindow2(m_hWnd,ppDisp,Cancel);
 			}
 			break;
 
@@ -189,76 +141,76 @@ namespace DM
 				DWORD dwFlags        = pDispParams->rgvarg[2].intVal;
 				wchar_t* bstrUrlContext = pDispParams->rgvarg[1].bstrVal;
 				wchar_t* bstrUrl        = pDispParams->rgvarg[0].bstrVal;
-				m_pEvtHandler->NewWindow3(m_hWnd,ppDisp,Cancel,dwFlags,bstrUrlContext,bstrUrl);
+				hr = m_pEvtHandler->NewWindow3(m_hWnd,ppDisp,Cancel,dwFlags,bstrUrlContext,bstrUrl);
 			}
 			break;
 
 		case DISPID_ONFULLSCREEN:
 			{
 				VARIANT_BOOL FullScreen = pDispParams->rgvarg[0].boolVal;
-				m_pEvtHandler->OnFullScreen(m_hWnd,FullScreen);
+				hr = m_pEvtHandler->OnFullScreen(m_hWnd,FullScreen);
 			}
 			break;
 		
 		case DISPID_ONMENUBAR:
 			{
 				VARIANT_BOOL MenuBar = pDispParams->rgvarg[0].boolVal;
-				m_pEvtHandler->OnMenuBar(m_hWnd,MenuBar);
+				hr = m_pEvtHandler->OnMenuBar(m_hWnd,MenuBar);
 			}
 			break;
 
 		case DISPID_ONQUIT:
 			{
-				m_pEvtHandler->OnQuit(m_hWnd);
+				hr = m_pEvtHandler->OnQuit(m_hWnd);
 			}
 			break;
 
 		case DISPID_ONSTATUSBAR:
 			{
 				VARIANT_BOOL StatusBar = pDispParams->rgvarg[0].boolVal;
-				m_pEvtHandler->OnStatusBar(m_hWnd,StatusBar);
+				hr = m_pEvtHandler->OnStatusBar(m_hWnd,StatusBar);
 			}
 			break;
 
 		case DISPID_ONTHEATERMODE:
 			{
 				VARIANT_BOOL TheaterMode = pDispParams->rgvarg[0].boolVal;
-				m_pEvtHandler->OnTheaterMode(m_hWnd,TheaterMode);
+				hr = m_pEvtHandler->OnTheaterMode(m_hWnd,TheaterMode);
 			}
 			break;
 
 		case DISPID_ONTOOLBAR:
 			{
 				VARIANT_BOOL ToolBar = pDispParams->rgvarg[0].boolVal;
-				m_pEvtHandler->OnToolBar(m_hWnd,ToolBar);
+				hr = m_pEvtHandler->OnToolBar(m_hWnd,ToolBar);
 			}
 			break;
 
 		case DISPID_ONVISIBLE:
 			{
 				VARIANT_BOOL Visible = pDispParams->rgvarg[0].boolVal;
-				m_pEvtHandler->OnVisible(m_hWnd,Visible);
+				hr = m_pEvtHandler->OnVisible(m_hWnd,Visible);
 			}
 			break;
 		
 		case DISPID_PRINTTEMPLATEINSTANTIATION:
 			{
 				IDispatch *pDisp = pDispParams->rgvarg[0].pdispVal;
-				m_pEvtHandler->PrintTemplateInstantiation(m_hWnd,pDisp);
+				hr = m_pEvtHandler->PrintTemplateInstantiation(m_hWnd,pDisp);
 			}
 			break;
 		
 		case DISPID_PRINTTEMPLATETEARDOWN:
 			{
 				IDispatch *pDisp = pDispParams->rgvarg[0].pdispVal;
-				m_pEvtHandler->PrintTemplateTeardown(m_hWnd,pDisp);
+				hr = m_pEvtHandler->PrintTemplateTeardown(m_hWnd,pDisp);
 			}
 			break;
 
 		case DISPID_PRIVACYIMPACTEDSTATECHANGE:
 			{
 				VARIANT_BOOL PrivacyImpacted = pDispParams->rgvarg[0].boolVal;
-				m_pEvtHandler->PrivacyImpactedStateChange(m_hWnd,PrivacyImpacted);
+				hr = m_pEvtHandler->PrivacyImpactedStateChange(m_hWnd,PrivacyImpacted);
 			}
 			break;
 
@@ -266,42 +218,42 @@ namespace DM
 			{
 				LONG Progress 	 =	pDispParams->rgvarg[1].lVal;
 				LONG ProgressMax = pDispParams->rgvarg[0].lVal;
-				m_pEvtHandler->ProgressChange(m_hWnd,Progress,ProgressMax);
+				hr = m_pEvtHandler->ProgressChange(m_hWnd,Progress,ProgressMax);
 			}
 			break;
 
 		case DISPID_PROPERTYCHANGE:
 			{
 				wchar_t* szProperty = pDispParams->rgvarg[0].bstrVal;
-				m_pEvtHandler->PropertyChange(m_hWnd,szProperty);
+				hr = m_pEvtHandler->PropertyChange(m_hWnd,szProperty);
 			}
 			break;
 
 		case DISPID_SETPHISHINGFILTERSTATUS:
 			{
 				LONG PhishingFilterStatus = pDispParams->rgvarg[0].lVal;
-				m_pEvtHandler->SetPhishingFilterStatus(m_hWnd,PhishingFilterStatus);
+				hr = m_pEvtHandler->SetPhishingFilterStatus(m_hWnd,PhishingFilterStatus);
 			}
 			break;
 
 		case DISPID_SETSECURELOCKICON:
 			{
 				int SecureLockIcon = pDispParams->rgvarg[0].intVal;
-				m_pEvtHandler->SetSecureLockIcon(m_hWnd,SecureLockIcon);
+				hr = m_pEvtHandler->SetSecureLockIcon(m_hWnd,SecureLockIcon);
 			}
 			break;
 
 		case DISPID_STATUSTEXTCHANGE:
 			{
 				wchar_t* Text = pDispParams->rgvarg[0].bstrVal;
-				m_pEvtHandler->StatusTextChange(m_hWnd,Text);
+				hr = m_pEvtHandler->StatusTextChange(m_hWnd,Text);
 			}
 			break;
 
 		case DISPID_TITLECHANGE:
 			{
 				wchar_t* Text = pDispParams->rgvarg[0].bstrVal;
-				m_pEvtHandler->TitleChange(m_hWnd,Text);
+				hr = m_pEvtHandler->TitleChange(m_hWnd,Text);
 			}
 			break;
 		
@@ -309,42 +261,42 @@ namespace DM
 			{
 				VARIANT_BOOL IsChildWindow = pDispParams->rgvarg[1].boolVal;
 				VARIANT_BOOL *Cancel = pDispParams->rgvarg[0].pboolVal;
-				m_pEvtHandler->WindowClosing(m_hWnd,IsChildWindow,Cancel);
+				hr = m_pEvtHandler->WindowClosing(m_hWnd,IsChildWindow,Cancel);
 			}
 			break;
 
 		case DISPID_WINDOWSETHEIGHT:
 			{
 				LONG Height = pDispParams->rgvarg[0].lVal;
-				m_pEvtHandler->WindowSetHeight(m_hWnd,Height);
+				hr = m_pEvtHandler->WindowSetHeight(m_hWnd,Height);
 			}
 			break;
 
 		case DISPID_WINDOWSETLEFT:
 			{
 				LONG Left = pDispParams->rgvarg[0].lVal;
-				m_pEvtHandler->WindowSetLeft(m_hWnd,Left);
+				hr = m_pEvtHandler->WindowSetLeft(m_hWnd,Left);
 			}
 			break;
 
 		case DISPID_WINDOWSETRESIZABLE:
 			{
 				VARIANT_BOOL Resizable = pDispParams->rgvarg[0].boolVal;
-				m_pEvtHandler->WindowSetResizable(m_hWnd,Resizable);
+				hr = m_pEvtHandler->WindowSetResizable(m_hWnd,Resizable);
 			}
 			break;
 
 		case DISPID_WINDOWSETTOP:
 			{
 				LONG Top = pDispParams->rgvarg[0].lVal;
-				m_pEvtHandler->WindowSetTop(m_hWnd,Top);
+				hr = m_pEvtHandler->WindowSetTop(m_hWnd,Top);
 			}
 			break;
 
 		case DISPID_WINDOWSETWIDTH:
 			{
 				LONG Width = pDispParams->rgvarg[0].lVal;
-				m_pEvtHandler->WindowSetWidth(m_hWnd,Width);
+				hr = m_pEvtHandler->WindowSetWidth(m_hWnd,Width);
 			}	
 			break;
 
@@ -352,50 +304,57 @@ namespace DM
 			{
 				DWORD dwFlags = pDispParams->rgvarg[1].ulVal;
 				DWORD dwValidFlagsMask = pDispParams->rgvarg[0].ulVal;
-				m_pEvtHandler->WindowStateChanged(m_hWnd,dwFlags,dwValidFlagsMask);
+				hr = m_pEvtHandler->WindowStateChanged(m_hWnd,dwFlags,dwValidFlagsMask);
 			}
 			break;
 		default:
 			return DISP_E_MEMBERNOTFOUND;
 		}
-		return S_OK;
+		return hr;
 	}
 
-//////////////////////////////////////////////////////////////////////////
-//DMIEDocHostUIHandler
+	///DMIEDocHostUIHandler------------------------------------------------------------------------------------
 	DMIEDocHostUIHandler::DMIEDocHostUIHandler()
-		: m_refCount(0)
+		: m_nRef(0)
 		, m_pWebBrowser(NULL)
-		, m_bHasScrollBar_(false)
+		, m_bShowScrollBar(false)
+		, m_bShowContextMenu(true)
 	{
 	}
 
-	void DMIEDocHostUIHandler::SetWebBrowser( DUIIE *pWebBrowser )
+	HRESULT STDMETHODCALLTYPE DMIEDocHostUIHandler::QueryInterface(REFIID riid, __RPC__deref_out void __RPC_FAR *__RPC_FAR *ppvObject)
 	{
-		m_pWebBrowser=pWebBrowser;
-	}
-
-	HRESULT STDMETHODCALLTYPE DMIEDocHostUIHandler::QueryInterface( /* [in] */ REFIID riid, /* [iid_is][out] */ __RPC__deref_out void __RPC_FAR *__RPC_FAR *ppvObject )
-	{
-		if(IsEqualIID(riid, IID_IUnknown) || IsEqualIID(riid, IID_IDispatch) || IsEqualIID(riid, IID_IDocHostUIHandler))
+		if (IsEqualIID(riid, IID_IUnknown) || IsEqualIID(riid, IID_IDispatch) || IsEqualIID(riid, IID_IDocHostUIHandler))
 		{
 			AddRef();
 			*ppvObject=this;
 			return S_OK;
-		}else
+		}
+		else
 		{
 			ppvObject=NULL;
 			return E_NOINTERFACE;
 		}
 	}
 
-	HRESULT STDMETHODCALLTYPE DMIEDocHostUIHandler::GetHostInfo( /* [out][in] */ DOCHOSTUIINFO *pInfo )
+	HRESULT STDMETHODCALLTYPE DMIEDocHostUIHandler::ShowContextMenu(DWORD dwID, POINT *ppt, IUnknown *pcmdtReserved, IDispatch *pdispReserved)
 	{
-		if(pInfo)
+		if (!m_bShowContextMenu)
+		{
+			return S_OK;
+		}
+
+		return E_NOTIMPL;
+	}
+
+
+	HRESULT STDMETHODCALLTYPE DMIEDocHostUIHandler::GetHostInfo(DOCHOSTUIINFO *pInfo)
+	{
+		if (pInfo)
 		{
 			pInfo->cbSize = sizeof(DOCHOSTUIINFO);
-			pInfo->dwFlags = DOCHOSTUIFLAG_NO3DBORDER | DOCHOSTUIFLAG_THEME | DOCHOSTUIFLAG_NO3DOUTERBORDER | DOCHOSTUIFLAG_DIALOG | DOCHOSTUIFLAG_DISABLE_HELP_MENU;
-			if (m_bHasScrollBar_)								//决定是否显示滚动条
+			pInfo->dwFlags = DOCHOSTUIFLAG_DIV_BLOCKDEFAULT | DOCHOSTUIFLAG_CODEPAGELINKEDFONTS | DOCHOSTUIFLAG_THEME | DOCHOSTUIFLAG_NO3DBORDER;
+			if (m_bShowScrollBar)								//决定是否显示滚动条
 			{
 				pInfo->dwFlags |= DOCHOSTUIFLAG_FLAT_SCROLLBAR;
 			}
@@ -408,44 +367,44 @@ namespace DM
 		return S_OK;
 	}
 
-	HRESULT STDMETHODCALLTYPE DMIEDocHostUIHandler::GetExternal( /* [out] */ IDispatch **ppDispatch )
+	HRESULT STDMETHODCALLTYPE DMIEDocHostUIHandler::GetExternal(IDispatch **ppDispatch)
 	{
-		if(m_pWebBrowser)
+		if (m_pWebBrowser)
 		{
-			*ppDispatch=&m_pWebBrowser->m_external;
-		}else
+			*ppDispatch = &m_pWebBrowser->m_External;
+		}
+		else
 		{
-			*ppDispatch=NULL;
+			*ppDispatch = NULL;
 			return S_FALSE;
 		}
 		return S_OK;
 	}
 
-	HRESULT STDMETHODCALLTYPE DMIEDocHostUIHandler::TranslateUrl( /* [in] */ DWORD dwTranslate, /* [in] */ __in __nullterminated OLECHAR *pchURLIn, /* [out] */ __out OLECHAR **ppchURLOut )
+	HRESULT STDMETHODCALLTYPE DMIEDocHostUIHandler::TranslateUrl(DWORD dwTranslate, __in __nullterminated OLECHAR *pchURLIn,  __out OLECHAR **ppchURLOut)
 	{
 		*ppchURLOut = 0;
 		return(S_FALSE);
 	}
 
-	HRESULT STDMETHODCALLTYPE DMIEDocHostUIHandler::FilterDataObject( /* [in] */ IDataObject *pDO, /* [out] */ IDataObject **ppDORet )
+	HRESULT STDMETHODCALLTYPE DMIEDocHostUIHandler::FilterDataObject(IDataObject *pDO,  IDataObject **ppDORet)
 	{
 		*ppDORet = 0;
 		return S_FALSE;
 	}
 
-//////////////////////////////////////////////////////////////////////////
-//DMIEOleClientSite
+	///DMIEOleClientSite------------------------------------------------------------------------------------
 	DMIEOleClientSite::DMIEOleClientSite()
-		: m_refCount(0)
+		: m_nRef(0)
 	{
 	}
 
-	void DMIEOleClientSite::SetWebBrowser( DUIIE* pWebBrowser )
+	void DMIEOleClientSite::SetWebBrowser(DUIIE* pWebBrowser)
 	{
 		m_pWebBrowser = pWebBrowser;
 	}
 
-	STDMETHODIMP DMIEOleClientSite::QueryInterface( /* [in] */ REFIID riid, /* [iid_is][out] */ VOID **ppvObject )
+	STDMETHODIMP DMIEOleClientSite::QueryInterface(REFIID riid, /* [iid_is][out] */ VOID **ppvObject)
 	{
 		if(IsEqualIID(riid, IID_IUnknown) || IsEqualIID(riid, IID_IOleClientSite))
 		{
@@ -455,8 +414,8 @@ namespace DM
 		}
 		else if (IsEqualIID(riid, IID_IDocHostUIHandler))
 		{
-			m_pWebBrowser->m_docHostUIHandler.AddRef();
-			*ppvObject=&(m_pWebBrowser->m_docHostUIHandler);
+			m_pWebBrowser->m_DocHostUIHandler.AddRef();
+			*ppvObject=&(m_pWebBrowser->m_DocHostUIHandler);
 			return S_OK;
 		}
 		else
@@ -466,30 +425,29 @@ namespace DM
 		}
 	}
 
-//////////////////////////////////////////////////////////////////////////
-//DMIEExternal
+	///DMIEExternal------------------------------------------------------------------------------------
 	DMIEExternal::DMIEExternal()
-		: m_refCount(0)
+		: m_nRef(0)
 		, m_pWebBrowser(NULL), m_pEvtHandler(NULL)
 	{
 	}
 
-	void DMIEExternal::SetWebBrowser( DUIIE *pWebBrowser )
+	void DMIEExternal::SetWebBrowser(DUIIE *pWebBrowser)
 	{
 		m_pWebBrowser = pWebBrowser;
 	}
 
-	void DMIEExternal::SetEvtHandler( IDMWebEvent* pEventHandler )
+	void DMIEExternal::SetEvtHandler(IDMWebEvent* pEventHandler)
 	{
 		m_pEvtHandler = pEventHandler;
 	}
 
-	void DMIEExternal::SetDUIWnd( DUIWND hWnd )
+	void DMIEExternal::SetDUIWnd(DUIWND hWnd)
 	{
-		m_hWnd = hWnd;
+		m_hDUIWnd = hWnd;
 	}
 
-	HRESULT STDMETHODCALLTYPE DMIEExternal::QueryInterface( /* [in] */ REFIID riid, /* [iid_is][out] */ __RPC__deref_out void __RPC_FAR *__RPC_FAR *ppvObject )
+	HRESULT STDMETHODCALLTYPE DMIEExternal::QueryInterface(REFIID riid, /* [iid_is][out] */ __RPC__deref_out void __RPC_FAR *__RPC_FAR *ppvObject)
 	{
 		if(IsEqualIID(riid, IID_IUnknown) || IsEqualIID(riid, IID_IDispatch))
 		{
@@ -503,56 +461,52 @@ namespace DM
 		}
 	}
 
-	HRESULT STDMETHODCALLTYPE DMIEExternal::GetIDsOfNames( /* [in] */ __RPC__in REFIID riid, /* [size_is][in] */ __RPC__in_ecount_full(cNames) LPOLESTR *rgszNames, /* [range][in] */ UINT cNames, /* [in] */ LCID lcid, /* [size_is][out] */ __RPC__out_ecount_full(cNames) DISPID *rgDispId )
+	HRESULT STDMETHODCALLTYPE DMIEExternal::GetIDsOfNames(__RPC__in REFIID riid, /* [size_is][in] */ __RPC__in_ecount_full(cNames) LPOLESTR *rgszNames, /* [range][in] */ UINT cNames, LCID lcid, /* [size_is][out] */ __RPC__out_ecount_full(cNames) DISPID *rgDispId)
 	{
 		if (m_pEvtHandler)
 		{
-			return m_pEvtHandler->GetIDsOfNames(m_hWnd, riid, rgszNames, cNames, lcid, rgDispId);
+			return m_pEvtHandler->GetIDsOfNames(m_hDUIWnd, riid, rgszNames, cNames, lcid, rgDispId);
 		}
 		return S_OK;
 	}
 
-	HRESULT STDMETHODCALLTYPE DMIEExternal::Invoke( /* [in] */ DISPID dispIdMember, /* [in] */ REFIID riid, /* [in] */ LCID lcid, /* [in] */ WORD wFlags, /* [out][in] */ DISPPARAMS *pDispParams, /* [out] */ VARIANT *pVarResult, /* [out] */ EXCEPINFO *pExcepInfo, /* [out] */ UINT *puArgErr )
+	HRESULT STDMETHODCALLTYPE DMIEExternal::Invoke(DISPID dispIdMember, REFIID riid, LCID lcid, WORD wFlags, DISPPARAMS *pDispParams,  VARIANT *pVarResult,  EXCEPINFO *pExcepInfo,  UINT *puArgErr)
 	{
 		if (m_pEvtHandler)
 		{
-			return m_pEvtHandler->Invoke(m_hWnd, dispIdMember, riid, lcid, wFlags, pDispParams, pVarResult, pExcepInfo, puArgErr);
+			return m_pEvtHandler->Invoke(m_hDUIWnd, dispIdMember, riid, lcid, wFlags, pDispParams, pVarResult, pExcepInfo, puArgErr);
 		}
 		return S_OK;
 	}
 
-//////////////////////////////////////////////////////////////////////////
-//DUIIE------------------------------------
+	///DUIIE------------------------------------------------------------------------------------
 	DUIIE::DUIIE()
 		:m_dwCookie(0)
-		,m_eventDispatch(NULL)
+		,m_EventDispatch(NULL)
 		,m_bShowScroll(false)	
-		,m_refreshkey(DUIAccel::TranslateAccelKey(L"f5"))
+		,m_bShowContext(true)
+		,m_bDisableScriptWarn(false)
+		,m_Refreshkey(DUIAccel::TranslateAccelKey(L"f5"))
 	{		
-		m_clsid = CLSID_WebBrowser;
-	}
-
-	DUIIE::~DUIIE()
-	{
-		RegisterEvtHandler(FALSE);
+		m_ClsId = CLSID_WebBrowser;
 	}
 
 	void DUIIE::DM_OnPaint(IDMCanvas* pCanvas)
 	{
 		do 
 		{
-			if (false == m_bInit)
+			if (false == m_bInit || NULL == m_pAxContainer)
 			{
 				break;
 			}
-			if (DM_IsVisible())
+			if (DM_IsVisible(true))
 			{
-				SetActiveXVisible(TRUE);
+				SetActiveXVisible(true);
 			}
 			DMSmartPtrT<IDMCanvas> pTemp;
 			g_pDMRender->CreateCanvas(m_rcWindow.Width(),m_rcWindow.Height(),&pTemp);
 			HDC hdc = pTemp->GetDC();
-			m_axContainer->ProcessPaint(hdc, m_rcWindow,true);
+			m_pAxContainer->ProcessPaint(hdc, m_rcWindow,true);
 			pTemp->ReleaseDC(hdc);
 			pCanvas->BitBlt(pTemp,0,0,m_rcWindow);
 		} while (false);
@@ -570,86 +524,64 @@ namespace DM
 		return nRet;
 	}
 
+	void DUIIE::OnDestroy()
+	{
+		g_pDMApp->RemoveMessageFilter(this);
+		RegisterEvtHandler(FALSE);
+		SetMsgHandled(FALSE);
+	}
+
 	void DUIIE::OnShowWindow(BOOL bShow, UINT nStatus)
 	{
 		DUIWindow::OnShowWindow(bShow,nStatus);
 		if (m_bDelayInit)
 		{
-			if (bShow&&false == m_bInit)// 窗口显示时才初始化
+			if (DM_IsVisible(true)&&false == m_bInit)// 窗口显示时才初始化
 			{
-				InitActiveX();
-				m_bInit = true;
+				m_bInit = InitActiveX();
 			}
 		}
 		else
 		{
 			if (false == m_bInit)
 			{
-				InitActiveX();
-				m_bInit = true;
+				m_bInit = InitActiveX();
 			}
 		}
-
-		SetActiveXVisible(FALSE); // 在此处全部隐藏，在绘制处显示
-	}
-
-	void DUIIE::OnDestroy()
-	{
-		g_pDMApp->RemoveMessageFilter(this);
+		
+		SetActiveXVisible(false);// 在此处全部隐藏，在绘制处显示
 	}
 
 	DMCode DUIIE::DV_OnAxActivate(IUnknown *pUnknwn)
 	{
-		m_pIE = pUnknwn;
-		if (m_pIE)
+		DMCode iErr = DM_ECODE_FAIL;
+		do 
 		{
-			RegisterEvtHandler(TRUE);
-			m_eventDispatch.SetWebBrowser(this);
-			m_external.SetWebBrowser(this);
-			m_clientSite.SetWebBrowser(this);
-			m_docHostUIHandler.SetWebBrowser(this);
-			m_eventDispatch.SetDUIWnd(this->GetDUIWnd());
-			m_external.SetDUIWnd(this->GetDUIWnd());
-
-			DMComPtr<IOleObject> spOleObject;
-			m_pIE->QueryInterface(IID_IOleObject, (void**)&spOleObject);
-			if (spOleObject)
+			DMComPtr<IWebBrowser2> pWeb = Ptr();
+			if (!pWeb)
 			{
-				spOleObject->SetClientSite(&m_clientSite);
+				break;
 			}
 
-// 			DMComPtr<IDispatch> spDisp;
-// 			HRESULT hr = m_pIE->get_Document(&spDisp);
-// 			
-// 			if (SUCCEEDED(hr) && spDisp)
-// 			{
-// 				DMComPtr<IOleObject, &IID_IOleObject> spOleObject(spDisp);
-// 				DMComQIPtr<IHTMLDocument2, &IID_IHTMLDocument2> spHTML(spDisp);
-// 				if (spHTML)
-// 				{
-// 					if (spOleObject)
-// 					{
-// 						CComPtr<IOleClientSite> spClientSite;
-// 						hr = spOleObject->GetClientSite(&spClientSite);
-// 						if (SUCCEEDED(hr) && spClientSite)
-// 						{
-// 							m_spDefaultDocHostUIHandler = spClientSite;
-// 							m_spDefaultOleCommandTarget = spClientSite;
-// 						}
-// 					}
-// 
-// 					DMComQIPtr<IOleClientSite, &IID_IOleClientSite> spOleClientSite(spDisp);
-// 
-// 					DMComQIPtr<ICustomDoc, &IID_ICustomDoc> spCustomDoc(spDisp);
-// 					if (spCustomDoc) {
-// 						spCustomDoc->SetUIHandler(&m_docHostUIHandler);
-// 					}
-// 				}
-//			} 
-			
-			m_pIE->Navigate(bstr_t(m_strUrl),NULL,NULL,NULL,NULL);
-		}
-		return DM_ECODE_OK;
+			RegisterEvtHandler(true);
+			m_EventDispatch.SetWebBrowser(this);
+			m_External.SetWebBrowser(this);
+			m_ClientSite.SetWebBrowser(this);
+			m_DocHostUIHandler.SetWebBrowser(this);
+			m_EventDispatch.SetDUIWnd(this->GetDUIWnd());
+			m_External.SetDUIWnd(this->GetDUIWnd());
+
+			DMComPtr<IOleObject> spOleObject;
+			pWeb->QueryInterface(IID_IOleObject, (void**)&spOleObject);
+			if (spOleObject)
+			{
+				spOleObject->SetClientSite(&m_ClientSite);
+			}
+			DisableScriptWarning(m_bDisableScriptWarn);
+			pWeb->Navigate(bstr_t(m_strUrl),NULL,NULL,NULL,NULL);
+			iErr = DM_ECODE_OK;
+		} while (false);
+		return iErr;
 	}
 
 	BOOL DUIIE::PreTranslateMessage(MSG* pMsg)
@@ -657,15 +589,22 @@ namespace DM
 		BOOL bRet = FALSE;
 		do 
 		{
-
-			if (!m_pIE||!DM_IsVisible(true))
+			// 快捷键只考虑键盘消息
+			if (NULL == pMsg
+				||(WM_KEYDOWN != pMsg->message && WM_KEYUP != pMsg->message))
+			{
+				break;;
+			}
+			
+			DMComPtr<IWebBrowser2> pWeb = Ptr();
+			if (!pWeb || !DM_IsVisible(true))
 			{
 				break;
 			}
 
 			HWND hWnd = GetContainer()->OnGetHWnd();
 			// todo.在一台测试机上运行时(版本:ie10)，IE以pop-realwnd存在,在主窗口上输入文字，会自动被ie捕获焦点，从而主窗口失焦,文字输入到了ie中
-			// 解决方式:1.判断realwnd是否隐藏,隐藏时,不转发快捷键消息 2.判断同一进程中焦点窗口是否为ie所在的realwnd，如果不是,不转发快捷键消息
+			// 解决方式:1.判断realwnd是否隐藏,隐藏时,不转发快捷键消息 2.判断同一进程中激活窗口是否为ie所在的realwnd，如果不是,不转发快捷键消息
 			if (!::IsWindowVisible(hWnd))// 1
 			{
 				break;
@@ -673,7 +612,7 @@ namespace DM
 
 			if(pMsg->message == WM_KEYDOWN) //lzlong add
 			{
-				DUIAccel acc(m_refreshkey);
+				DUIAccel acc(m_Refreshkey);
 				if(pMsg->wParam == acc.GetKey())
 				{
 					if ((0 == acc.GetModifier()&&!PUSH_ALT&&!PUSH_CTRL&&!PUSH_SHIFT)// 未按下辅助键
@@ -686,61 +625,40 @@ namespace DM
 					}
 				}				
 			}
-
-			HWND hFocusWnd = ::GetFocus();// 2
-			if (hFocusWnd != hWnd)
+			bool bCopy = PUSH_CTRL && (0x00000043 == pMsg->wParam);
+			HWND hwActive = GetActiveWindow();// 得到本线程的顶层激活窗口
+			if (hwActive != hWnd && !bCopy)
 			{
 				break;
 			}
-
-			DMComQIPtr<IOleInPlaceActiveObject> spInPlaceActiveObject(m_pIE);
+			
+			DMComQIPtr<IOleInPlaceActiveObject> spInPlaceActiveObject = pWeb;
 			if (spInPlaceActiveObject)
 			{
-				spInPlaceActiveObject->TranslateAccelerator(pMsg);
+				if (pMsg->wParam != VK_BACK)//防止退格两次
+				{
+					spInPlaceActiveObject->TranslateAccelerator(pMsg);
+				}
 			}
+
 		} while (false);
 
 		return bRet;
 	}
 
-	BOOL DUIIE::IsIEVisible()
+	HRESULT DUIIE::SetEvtHandler(IDMWebEvent* pEventHandler)
 	{
-		BOOL bRet = FALSE;
-		do 
-		{
-			if (!m_axContainer->ActiveXControl())
-			{
-				break;
-			}
-			DMComQIPtr<IOleWindow> ole_window = m_axContainer->ActiveXControl();
-			if (!ole_window)
-			{
-				break;
-			}
-			HWND window = NULL;
-			ole_window->GetWindow(&window);//For windowless objects, this method should always fail and return E_FAIL
-			if(!window)
-			{
-				break;
-			}
-			bRet = ::IsWindowVisible(window);	
-		} while (false);
-		return bRet;
-	}
-
-	HRESULT DUIIE::SetEvtHandler( IDMWebEvent* pEventHandler )
-	{
-		m_eventDispatch.SetEvtHandler(pEventHandler);
-		m_external.SetEvtHandler(pEventHandler);
+		m_EventDispatch.SetEvtHandler(pEventHandler);
+		m_External.SetEvtHandler(pEventHandler);
 		return S_OK;
 	}
 
-	HRESULT DUIIE::RegisterEvtHandler(BOOL inAdvise)
+	HRESULT DUIIE::RegisterEvtHandler(bool inAdvise)
 	{
 		HRESULT hr = S_FALSE;
 		do 
 		{
-			DMComQIPtr<IConnectionPointContainer> pCPC = m_pIE;
+			DMComQIPtr<IConnectionPointContainer> pCPC = Ptr();
 			if (!pCPC)
 			{
 				break;
@@ -753,7 +671,7 @@ namespace DM
 			}
 			if (inAdvise)
 			{
-				hr = pCP->Advise(&m_eventDispatch, &m_dwCookie);
+				hr = pCP->Advise(&m_EventDispatch, &m_dwCookie);
 			}
 			else
 			{
@@ -764,17 +682,54 @@ namespace DM
 
 	}
 
-	HRESULT DUIIE::OpenUrl( LPCWSTR pszURL )
+	HRESULT DUIIE::OpenUrl(LPCWSTR pszURL,int iFlags /*= 0*/,LPCWSTR pszTargetFrameName /*= NULL*/,LPCWSTR pszHeaders /*= NULL*/, LPCSTR pszPostData /*= NULL*/, int iPostDataLen /*=0*/)
 	{
 		HRESULT hr = S_FALSE;
 		do 
 		{
-			m_strUrl = pszURL;// 如果IE延迟加载，保证在延迟加载时使用新的URL
-			if (!m_pIE)
+			if (!IsValidString(pszURL))
 			{
 				break;
 			}
-			hr = m_pIE->Navigate(bstr_t(pszURL),NULL,NULL,NULL,NULL);
+		
+			m_strUrl = pszURL;// 如果IE延迟加载，保证在延迟加载时使用新的URL
+			DMComPtr<IWebBrowser2> pWeb = Ptr();
+			if (!pWeb)
+			{
+				break;
+			}
+			_variant_t vUrl(pszURL);
+			_variant_t vFlags((iFlags!=-1)?(long)iFlags:(long)navNoReadFromCache, VT_I4);
+			_variant_t vTargetFrameName;
+			_variant_t vPostData;
+			_variant_t vHeader;
+			_variant_t vNull;
+			
+			if (IsValidString(pszTargetFrameName)) 
+			{
+				vTargetFrameName = pszTargetFrameName;
+			}
+			if (IsValidString(pszHeaders))
+			{
+				vHeader = pszHeaders;
+			}
+			if (IsValidString(pszPostData) && iPostDataLen>0)
+			{
+				SAFEARRAYBOUND sab = {(ULONG)iPostDataLen,0};
+				SAFEARRAY* pSF = ::SafeArrayCreate(VT_UI1, 1, &sab);
+				for (ULONG lIndex = 0; lIndex < sab.cElements; lIndex++) 
+				{
+					::SafeArrayPutElement(pSF, (LONG*)&lIndex, (void*)(&pszPostData[lIndex]));
+				}
+				vPostData.vt = VT_ARRAY | VT_UI1;
+				vPostData.parray = pSF;
+				hr = pWeb->Navigate2(&vUrl, &vFlags, &vTargetFrameName, &vPostData, &vHeader);
+				::SafeArrayDestroy(pSF);
+			}
+			else
+			{
+				hr = pWeb->Navigate2(&vUrl, &vNull, &vTargetFrameName, &vNull, &vHeader);
+			}
 		} while (false);
 		return hr;
 	}
@@ -784,12 +739,13 @@ namespace DM
 		HRESULT hr = S_FALSE;
 		do 
 		{
-			if (!m_pIE)
+			DMComPtr<IWebBrowser2> pWeb = Ptr();
+			if (!pWeb)
 			{
 				break;
 			}
 			BSTR _bsURL = NULL;
-			hr = m_pIE->get_LocationURL(&_bsURL);
+			hr = pWeb->get_LocationURL(&_bsURL);
 			if (!SUCCEEDED(hr) || _bsURL == NULL)
 				break;
 			CStringA strUrlA =_com_util::ConvertBSTRToString(_bsURL) ;
@@ -806,20 +762,113 @@ namespace DM
 		return hr;
 	}
 
+	CStringW DUIIE::GetUrl()
+	{
+		CStringW strUrl;
+		do 
+		{
+			DMComPtr<IWebBrowser2> pWeb = Ptr();
+			if (!pWeb)
+			{
+				break;
+			}
+			BSTR _bsURL = NULL;
+			HRESULT hr = pWeb->get_LocationURL(&_bsURL);
+			if (!SUCCEEDED(hr) || _bsURL == NULL)
+				break;
+			CStringA strUrlA =_com_util::ConvertBSTRToString(_bsURL) ;
+			strUrl = DMA2W(strUrlA, CP_UTF8);
+		} while (false);
+		return strUrl;
+	}
+
+	HWND DUIIE::GetOleWindow()
+	{
+		HWND hOleWnd = NULL;
+		do 
+		{
+			if (NULL == m_pAxContainer)
+			{
+				break;
+			}
+
+			DMComPtr<IUnknown> pUnknown = m_pAxContainer->ActiveXControl();
+			if (NULL == pUnknown)
+			{
+				break;
+			}
+
+			DMComQIPtr<IOleWindow> pOleWnd = pUnknown;
+			if (NULL == pOleWnd)
+			{
+				break;
+			}
+			pOleWnd->GetWindow(&hOleWnd);//For windowless objects, this method should always fail and return E_FAIL：eg: IE [Shell Embedding] window
+		} while (false);
+		return hOleWnd;
+	}
+
+	HWND DUIIE::GetIESWindow()
+	{
+		HWND hIESWnd = NULL;
+		do 
+		{
+			HWND hWnd = GetOleWindow();
+			if (!hWnd)
+			{
+				break;
+			}
+			hWnd = ::FindWindowEx(hWnd, NULL, L"Shell DocObject View", NULL);
+			if (NULL == hWnd)
+			{
+				break;
+			}
+			hIESWnd = ::FindWindowEx(hWnd, NULL, L"Internet Explorer_Server", NULL);
+		} while (false);
+		return hIESWnd;
+	}
+
+	DMComPtr<IWebBrowser2> DUIIE::Ptr()
+	{
+		DMComQIPtr<IWebBrowser2> ptr;
+		if (m_pAxContainer)
+		{
+			ptr = m_pAxContainer->ActiveXControl();
+		}
+		return ptr;
+	}
+
+	bool DUIIE::IsBusy()
+	{
+		VARIANT_BOOL vBusy = VARIANT_FALSE;
+		do 
+		{
+			DMComPtr<IWebBrowser2> pWeb = Ptr();
+			if (!pWeb)
+			{
+				break;
+			}
+			
+			pWeb->get_Busy(&vBusy);
+		} while (false);
+		return VARIANT_TRUE == vBusy;
+	}
+
 	HRESULT DUIIE::Stop()
 	{
 		HRESULT hr = S_FALSE;
 		do 
 		{
-			if (!m_pIE)
+			DMComPtr<IWebBrowser2> pWeb = Ptr();
+			if (!pWeb)
 			{
 				break;
 			}
 			VARIANT_BOOL vBusy = VARIANT_FALSE;
-			m_pIE->get_Busy(&vBusy);
+			pWeb->get_Busy(&vBusy);
 			// 只有浏览器繁忙时，才能停止浏览器。
 			if (VARIANT_TRUE == vBusy)
-				m_pIE->Stop();
+				pWeb->Stop();
 			hr = S_OK;
 		} while (false);
 		return hr;
@@ -830,11 +879,12 @@ namespace DM
 		HRESULT hr = S_FALSE;
 		do 
 		{
-			if (!m_pIE)
+			DMComPtr<IWebBrowser2> pWeb = Ptr();
+			if (!pWeb)
 			{
 				break;
 			}
-			m_pIE->Quit();
+			pWeb->Quit();
 			hr = S_OK;
 		} while (false);
 		return hr;
@@ -845,29 +895,41 @@ namespace DM
 		HRESULT hr = S_FALSE;
 		do 
 		{
-			if (!m_pIE)
+			if (m_strUrl.IsEmpty() || 0 == m_strUrl.CompareNoCase(L"about:blank"))
 			{
 				break;
 			}
-			m_pIE->Refresh();
+
+			DMComPtr<IWebBrowser2> pWeb = Ptr();
+			if (!pWeb)
+			{
+				break;
+			}
+			pWeb->Refresh();
 			hr = S_OK;
 		} while (false);
 		return hr;
 	}
 
-	HRESULT DUIIE::Refresh2( UINT32 nLevel )
+	HRESULT DUIIE::Refresh2(UINT32 nLevel)
 	{
 		HRESULT hr = S_FALSE;
 		do 
 		{
-			if (!m_pIE)
+			if (m_strUrl.IsEmpty() || 0 == m_strUrl.CompareNoCase(L"about:blank"))
+			{
+				break;
+			}
+
+			DMComPtr<IWebBrowser2> pWeb = Ptr();
+			if (!pWeb)
 			{
 				break;
 			}
 			VARIANT _v;
 			_v.vt = VT_I4;
 			_v.lVal = nLevel;
-			m_pIE->Refresh2(&_v);
+			pWeb->Refresh2(&_v);
 			hr = S_OK;
 		} while (false);
 		return hr;
@@ -878,11 +940,12 @@ namespace DM
 		HRESULT hr = S_FALSE;
 		do 
 		{
-			if (!m_pIE)
+			DMComPtr<IWebBrowser2> pWeb = Ptr();
+			if (!pWeb)
 			{
 				break;
 			}
-			m_pIE->GoBack();
+			pWeb->GoBack();
 			hr = S_OK;
 		} while (false);
 		return hr;
@@ -893,36 +956,43 @@ namespace DM
 		HRESULT hr = S_FALSE;
 		do 
 		{
-			if (!m_pIE)
+			DMComPtr<IWebBrowser2> pWeb = Ptr();
+			if (!pWeb)
 			{
 				break;
 			}
-			m_pIE->GoForward();
+			pWeb->GoForward();
 			hr = S_OK;
 		} while (false);
 		return hr;
 	}
 
-	HRESULT DUIIE::ExecuteScript( LPCWSTR pszScript )
+	HRESULT DUIIE::ExecuteScript(LPCWSTR pszScript)
 	{
 		HRESULT hr = S_FALSE;
 		do 
 		{
-			if (!m_pIE)
+			DMComPtr<IWebBrowser2> pWeb = Ptr();
+			if (!pWeb)
 			{
 				break;
 			}
 			DMComQIPtr<IHTMLDocument2> spDoc;
-			hr = m_pIE->get_Document(reinterpret_cast<IDispatch**>(&spDoc));
-			if (SUCCEEDED(hr) && spDoc) {
+			hr = pWeb->get_Document(reinterpret_cast<IDispatch**>(&spDoc));
+			if (SUCCEEDED(hr) && spDoc)
+			{
 				DMComQIPtr<IHTMLWindow2> spWin;
 				hr = spDoc->get_parentWindow(&spWin);
-				if (SUCCEEDED(hr) && spWin) {
+				if (SUCCEEDED(hr) && spWin)
+				{
 					_variant_t vRetCode;
-					try {
+					try 
+					{
 						_bstr_t _bsScript(pszScript);
 						hr = spWin->execScript(_bsScript, L"JavaScript", &vRetCode);
-					} catch(...) {
+					} 
+					catch(...) 
+					{
 					}
 				}
 			}
@@ -930,29 +1000,34 @@ namespace DM
 		return hr;
 	}
 
-	HRESULT DUIIE::ExecuteScriptFuntion( LPCWSTR strFun, const DM::CArray<LPCWSTR>& vecParams, LPWSTR strResult, int nMaxLen )
+	HRESULT DUIIE::ExecuteScriptFuntion(LPCWSTR strFun, const DM::CArray<LPCWSTR>& vecParams, LPWSTR strResult, int nMaxLen)
 	{
 		HRESULT hr = E_FAIL;
 		do 
 		{
-			if (!m_pIE)
+			DMComPtr<IWebBrowser2> pWeb = Ptr();
+			if (!pWeb)
 			{
 				break;
 			}
 			_variant_t _varErr;
 			DMComQIPtr<IDispatch>  pDisp;
-			hr = m_pIE->get_Document( &pDisp );
-			if (SUCCEEDED(hr) && pDisp) {
+			hr = pWeb->get_Document(&pDisp);
+			if (SUCCEEDED(hr) && pDisp)
+			{
 				DMComQIPtr<IHTMLDocument2> spDoc;
-				hr = pDisp->QueryInterface( IID_IHTMLDocument2,(void**)&spDoc );
-				if (SUCCEEDED(hr) && spDoc) {
+				hr = pDisp->QueryInterface(IID_IHTMLDocument2,(void**)&spDoc);
+				if (SUCCEEDED(hr) && spDoc)
+				{
 					DMComQIPtr<IDispatch> spScript;
 					hr = spDoc->get_Script(&spScript);
-					if (SUCCEEDED(hr) && spScript) {
+					if (SUCCEEDED(hr) && spScript) 
+					{
 						_bstr_t _bsMember(strFun);
 						DISPID _dispid = 0;
 						hr = spScript->GetIDsOfNames(IID_NULL, &_bsMember.GetBSTR(), 1, LOCALE_SYSTEM_DEFAULT, &_dispid);
-						if (SUCCEEDED(hr)) {
+						if (SUCCEEDED(hr))
+						{
 
 							DISPPARAMS _dispparams = { 0 };
 							_dispparams.cArgs = (UINT)vecParams.GetCount();
@@ -960,23 +1035,20 @@ namespace DM
 
 							// 以前没有CComBSTR::CopyTo出来BSTR没有释放，这里换成_variant_t。by ZC. 2011-12-30.
 							_variant_t* _vArrArg = new _variant_t[_dispparams.cArgs];
-							for ( size_t i = 0;i < _dispparams.cArgs;i++ ) {
+							for (size_t i = 0;i < _dispparams.cArgs;i++)
+							{
 								size_t indx = vecParams.GetCount() - i - 1;
 								// 这里自动转化为BSTR。
 								_vArrArg[i] = vecParams[indx];
 							}
 							_dispparams.rgvarg = _vArrArg;
 
-							EXCEPINFO _excepinfo = { 0 };
+							EXCEPINFO _excepinfo = {0};
 							UINT _nArgErr = (UINT)-1;	//initialize to invalid arg
 
 							hr = spScript->Invoke(_dispid,IID_NULL,0,DISPATCH_METHOD,&_dispparams, &_varErr, &_excepinfo, &_nArgErr);
 
-							if(_vArrArg != NULL)
-							{
-								delete []_vArrArg;
-								_vArrArg = NULL;
-							}
+							DM_DELETE_ARRAY(_vArrArg);
 						}
 					}
 				}
@@ -996,23 +1068,29 @@ namespace DM
 		return hr;
 	}
 
-	HRESULT DUIIE::DisableScriptWarning( bool bDisable )
+	HRESULT DUIIE::DisableScriptWarning(bool bDisable)
 	{
 		HRESULT hr = E_FAIL;
 		do 
 		{
-			if (!m_pIE)
+			DMComPtr<IWebBrowser2> pWeb = Ptr();
+			if (!pWeb)
 			{
 				break;
 			}
-			hr = m_pIE->put_Silent(bDisable ? VARIANT_TRUE : VARIANT_FALSE);
+			hr = pWeb->put_Silent(bDisable ? VARIANT_TRUE : VARIANT_FALSE);
 		} while (false);
 		return hr;
 	}
 
-	void DUIIE::SetScrollBarShow( bool bShow )
+	void DUIIE::SetScrollBarShow(bool bShow)
 	{
-		m_docHostUIHandler.setScrollBar(bShow);
+		m_DocHostUIHandler.SetScrollBarShow(bShow);
+	}
+
+	void DUIIE::SetContextMenuShow(bool bShow)
+	{
+		m_DocHostUIHandler.SetContextMenuShow(bShow);
 	}
 
 	DMCode DUIIE::IESetAttribute(LPCWSTR pszAttribute,LPCWSTR pszValue,bool bLoadXml)
@@ -1034,13 +1112,37 @@ namespace DM
 	{
 		dm_parsebool(pszValue,m_bShowScroll);
 		SetScrollBarShow(m_bShowScroll);
+		if (false == bLoadXml)
+		{
+			Refresh();
+		}
+		
+		return DM_ECODE_OK;
+	}
+
+	DMCode DUIIE::OnAttributeShowContext(LPCWSTR pszValue, bool bLoadXml)
+	{
+		dm_parsebool(pszValue,m_bShowContext);
+		SetContextMenuShow(m_bShowContext);
+		if (false == bLoadXml)
+		{
+			Refresh();
+		}
+
+		return DM_ECODE_OK;
+	}
+
+	DMCode DUIIE::OnAttributeDisableScriptWarn(LPCWSTR pszValue, bool bLoadXml)
+	{
+		dm_parsebool(pszValue,m_bDisableScriptWarn);
+		DisableScriptWarning(m_bDisableScriptWarn);
 		return DM_ECODE_OK;
 	}
 
 	DMCode DUIIE::OnAttributeRefreshKey(LPCWSTR pszValue, bool bLoadXml)
 	{
 		CStringW strValue = pszValue;
-		m_refreshkey = DUIAccel::TranslateAccelKey(strValue);
+		m_Refreshkey = DUIAccel::TranslateAccelKey(strValue);
 		return DM_ECODE_OK;
 	}
 

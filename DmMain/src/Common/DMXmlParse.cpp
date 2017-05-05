@@ -352,6 +352,13 @@ namespace DM
 		return bRet;
 	}
 
+	bool DMXmlNode::SetAttributeInt(LPCWSTR name, int value,bool bAppend /*= true*/)
+	{
+		DMBufT<wchar_t> pBuf;pBuf.Allocate(20);
+		swprintf_s(pBuf.get(),20,L"%d",value);
+		return SetAttribute(name,pBuf.get(),bAppend);
+	}
+
 	bool DMXmlNode::RemoveAttribute(LPCWSTR name)
 	{
 		bool bRet = false;
@@ -378,15 +385,30 @@ namespace DM
 		return bRet;
 	}
 
-	bool DMXmlNode::GetXmlContent(CStringW &strDebug,int iBufSize)
+	bool DMXmlNode::GetXmlContent(CStringW &strDebug)
 	{
 		bool bRet = false;
 		do 
-		{	DMBufT<wchar_t> pBuf;pBuf.Allocate(iBufSize);
-			pugi::xml_writer_buff writer(pBuf.get(),iBufSize);
-			m_XmlNode.print(writer,L"\t",pugi::format_default,pugi::encoding_utf16);
-			strDebug = CStringW(writer.buffer(),writer.size());
-			bRet = true;
+		{	
+			int iBufSize = 500;
+			DMBufT<wchar_t> pBuf;pBuf.Allocate(iBufSize);
+			pugi::xml_writer_buff* pWriter = new pugi::xml_writer_buff(pBuf.get(),iBufSize);
+			m_XmlNode.print(*pWriter,L"\t",pugi::format_default,pugi::encoding_utf16);
+			if (!pWriter->isfinished())
+			{
+				iBufSize = pWriter->needsize();
+				DM_DELETE(pWriter);
+				pBuf.Allocate(iBufSize);
+				pWriter = new pugi::xml_writer_buff(pBuf.get(),iBufSize);
+				m_XmlNode.print(*pWriter,L"\t",pugi::format_default,pugi::encoding_utf16);
+			}
+			
+			bRet = pWriter->isfinished();
+			if (bRet)
+			{
+				strDebug = CStringW(pWriter->buffer(),pWriter->size());
+			}
+			DM_DELETE(pWriter);
 		} while (false);
 		return bRet;
 	}

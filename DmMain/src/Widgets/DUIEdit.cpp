@@ -55,6 +55,7 @@ namespace DM
 		// edit
 		DMADDEVENT(DMEventRENotifyArgs::EventID);
 		DMADDEVENT(DMEventREWantReturnArgs::EventID);
+		DMADDEVENT(DMEventRButtonMenuCmdArgs::EventID);//
 	}
 
 	void DUIRichEdit::UnInit()
@@ -413,6 +414,13 @@ namespace DM
 			}
 
 		} while (false);
+	}
+
+	void DUIRichEdit::OnRButtonDown(UINT nFlags, CPoint point)
+	{
+		DMEventRButtonMenuCmdArgs Evt(this);
+		Evt.m_pt = point;
+		DV_FireEvent(Evt); 
 	}
 
 	void DUIRichEdit::OnMouseMove(UINT nFlags, CPoint point)
@@ -1705,6 +1713,7 @@ namespace DM
 		m_SurfaceTextClr       = PBGRA(0xcc,0xcc,0xcc,0xff);
 		m_bRichText	   = 0;
 		m_bAutoSel     = false;
+		m_uSurfaceAlign= EditAlign_Left;
 	}
 
 	int DUIEdit::GetSurfaceText(LPTSTR lpString,int nMaxCount)
@@ -1799,7 +1808,16 @@ namespace DM
 			{
 				DMColor ClrOld = pCanvas->SetTextColor(m_SurfaceTextClr);
 				CStringW strTrans = DMTR(m_strSurfaceText);
-				pCanvas->DrawText(strTrans,strTrans.GetLength(),&rcClient,DT_SINGLELINE|DT_VCENTER);
+				UINT uFormat = DT_SINGLELINE|DT_VCENTER;
+				if (EditAlign_Center == m_uSurfaceAlign)
+				{
+					uFormat |= DT_CENTER;
+				}
+				else if (EditAlign_Right == m_uSurfaceAlign)
+				{
+					uFormat |= DT_RIGHT;
+				}
+				pCanvas->DrawText(strTrans,strTrans.GetLength(),&rcClient,uFormat);
 				pCanvas->SetTextColor(ClrOld);
 			}
 			

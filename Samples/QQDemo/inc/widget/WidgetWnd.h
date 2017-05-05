@@ -40,8 +40,10 @@ public:
 	DMCode OnBtnMenu();
 	DMCode OnAttrTest();
 	DMCode OnEditChange(DMEventArgs *pEvt);
+	DMCode OnEditRButtonMenu(DMEventArgs *pEvt);
 	DMCode ListCtrlExHeaderClick(DMEventArgs* pEvt);
 
+	
 	// Webkit≤‚ ‘
 	DMCode OnBtnWebBack();
 	DMCode OnBtnWebRefresh(); 
@@ -51,7 +53,7 @@ public:
 	static void OnURLChanged(const DMClientHandler*, DMString url);
 
 	// IE≤‚ ‘
-	DMCode NavigateComplete2(DUIWND hWnd,DMIN IDispatch *pDisp,DMIN wchar_t *pUrl);
+	HRESULT NavigateComplete2(DUIWND hWnd,DMIN IDispatch *pDisp,DMIN wchar_t *pUrl);
 
 	DMCode OnFireEvent(DMEventArgs &Evt);
 	void OnDUITimer(char id);
